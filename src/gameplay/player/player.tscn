@@ -110,9 +110,24 @@ size = Vector2(12, 27)
 script = ExtResource("1_kh5p4")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
+wallJump = true
+dashType = 4
+cornerCutting = true
 leftRaycast = NodePath("lCast")
 middleRaycast = NodePath("mCast")
 rightRaycast = NodePath("rCast")
+crouch = true
+canRoll = true
+run = true
+jump = true
+idle = true
+walk = true
+slide = true
+latch = true
+falling = true
+crouch_idle = true
+crouch_walk = true
+roll = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1503684476]
 position = Vector2(0, -17)
