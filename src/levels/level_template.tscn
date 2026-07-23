@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://hy7twvwytp77"]
+
+[ext_resource type="Script" uid="uid://cc1byrm6hqyrs" path="res://src/levels/level.gd" id="1_ync2b"]
+[ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="2_88vja"]
+[ext_resource type="PackedScene" uid="uid://03vulpfxbwb8" path="res://src/levels/level_tilemap_template.tscn" id="3_88vja"]
+[ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="3_nm6nc"]
+
+[node name="Level" type="Node2D" unique_id=1273719150]
+script = ExtResource("1_ync2b")
+metadata/_custom_type_script = "uid://cc1byrm6hqyrs"
+
+[node name="LevelLayer" type="Node2D" parent="." unique_id=1267301956]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="LevelLayer" unique_id=2103697111]
+modulate = Color(0.16078432, 0.078431375, 0.34117648, 1)
+position = Vector2(520, -236)
+scale = Vector2(4.73061, 2.7368422)
+texture = ExtResource("2_88vja")
+
+[node name="TileMap" parent="LevelLayer" unique_id=1277057473 instance=ExtResource("3_88vja")]
+
+[node name="Entities" type="Node2D" parent="." unique_id=1117686574]
+
+[node name="Player" parent="Entities" unique_id=726854448 instance=ExtResource("3_nm6nc")]
+position = Vector2(123, -78)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=761304463]
+position = Vector2(510, -214)
