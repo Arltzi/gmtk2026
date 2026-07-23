@@ -1,12 +1,23 @@
 [gd_scene format=3 uid="uid://dhptjvnnldmuy"]
 
+[ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="1_3fed5"]
+[ext_resource type="PackedScene" uid="uid://dgjv162syqc6g" path="res://src/levels/tile_map.tscn" id="1_6yl8a"]
+
 [node name="MainGame" type="Node" unique_id=422265170]
 
 [node name="World" type="Node2D" parent="." unique_id=1176273769]
 
 [node name="LevelLayer" type="Node2D" parent="World" unique_id=1117362206]
 
+[node name="TileMap" parent="World/LevelLayer" unique_id=1864796020 instance=ExtResource("1_6yl8a")]
+
 [node name="Entities" type="Node2D" parent="World" unique_id=893998535]
+
+[node name="Player" parent="World/Entities" unique_id=726854448 instance=ExtResource("1_3fed5")]
+position = Vector2(-264, -47)
+
+[node name="Camera2D" type="Camera2D" parent="World/Entities/Player" unique_id=1663936456]
+position = Vector2(0, -27)
 
 [node name="Systems" type="Node" parent="." unique_id=149531032]
 
@@ -22,7 +33,7 @@ offset_bottom = 40.0
 
 [node name="PauseLayerCanvas" type="CanvasLayer" parent="." unique_id=2034058915]
 
-[node name="PauseRoot" type="Control" parent="PauseLayerCanvas" unique_id=1855001187]
+[node name="Control" type="Control" parent="PauseLayerCanvas" unique_id=1855001187]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
