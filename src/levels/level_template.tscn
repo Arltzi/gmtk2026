@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://03vulpfxbwb8" path="res://src/levels/level_tilemap_template.tscn" id="3_88vja"]
 [ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="3_nm6nc"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88vja"]
+size = Vector2(16, 16)
+
 [node name="Level" type="Node2D" unique_id=1273719150]
 script = ExtResource("1_ync2b")
 metadata/_custom_type_script = "uid://cc1byrm6hqyrs"
@@ -26,3 +29,18 @@ position = Vector2(123, -78)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=761304463]
 position = Vector2(510, -214)
+
+[node name="CompleteLevelArea" type="Area2D" parent="." unique_id=885410066]
+position = Vector2(969, -58)
+scale = Vector2(1, 2.3737464)
+collision_mask = 4
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompleteLevelArea" unique_id=1211144788]
+shape = SubResource("RectangleShape2D_88vja")
+
+[node name="Sprite2D" type="Sprite2D" parent="CompleteLevelArea" unique_id=176384612]
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("2_88vja")
+
+[connection signal="body_entered" from="CompleteLevelArea" to="." method="complete_level" flags=3 unbinds=1]

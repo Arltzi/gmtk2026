@@ -11,8 +11,8 @@ var next_level_scene : PackedScene
 
 #region COMPONENTS
 
-signal started
-signal completed
+signal started(Level)
+signal completed(Level)
 
 #endregion
 
@@ -34,12 +34,12 @@ signal completed
 func start_level() -> void:
   next_level_scene = load(next_level_path)
   # validate next_level_scene here?
-  started.emit()
+  started.emit(self)
   pass
   
 
 func complete_level() -> void:
-  completed.emit()
+  completed.emit(self)
   pass
   
 #endregion

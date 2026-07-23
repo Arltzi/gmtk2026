@@ -77,6 +77,12 @@ roll={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="static_environment"
+2d_physics/layer_2="dynamic_environment"
+2d_physics/layer_3="player"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
