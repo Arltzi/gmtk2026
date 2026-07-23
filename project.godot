@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="gmtk2026"
+run/main_scene="uid://drx0p24s6t3qg"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+TickManager="*uid://cxha5g28ldss1"
 
 [display]
 

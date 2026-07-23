@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cs32dqpec62py"]
+
+[ext_resource type="Script" uid="uid://ba7ufjwmebxgc" path="res://src/gameplay/puzzle/moving_platform.gd" id="1_bi2s0"]
+[ext_resource type="Texture2D" uid="uid://ciuxyaoktugh5" path="res://icon.svg" id="2_4u0g4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rik14"]
+
+[node name="MovingPlatform" type="Node2D" unique_id=287723260]
+script = ExtResource("1_bi2s0")
+moveTime = 4
+metadata/_custom_type_script = "uid://dlck1gidxe0wv"
+
+[node name="MoveTo" type="Node2D" parent="." unique_id=1759351573]
+position = Vector2(477, 0)
+
+[node name="Platform" type="Area2D" parent="." unique_id=1792396954]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform" unique_id=1205883246]
+shape = SubResource("RectangleShape2D_rik14")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform" unique_id=1245457161]
+texture = ExtResource("2_4u0g4")
