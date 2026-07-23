@@ -41,5 +41,4 @@ func start_level() -> void:
 func complete_level() -> void:
   completed.emit(self)
   pass
-  
 #endregion
