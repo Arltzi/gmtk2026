@@ -1,6 +1,8 @@
 extends Node
 
 
+# 120 = 2 per second
+
 @export var bpm: float = 120.0
 var _time_per_beat: float = 0.0
 var _time_since_last_tick: float = 0.0
