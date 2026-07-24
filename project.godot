@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+TickManager="*uid://cxha5g28ldss1"
 LevelLoader="*uid://b246lksuu6la2"
 
 [display]

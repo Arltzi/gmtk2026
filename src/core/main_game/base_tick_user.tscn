@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://drx0p24s6t3qg"]
+
+[ext_resource type="Script" uid="uid://dlck1gidxe0wv" path="res://src/core/main_game/base_tick_user.gd" id="1_jfund"]
+
+[node name="BaseTickUser" type="Node2D" unique_id=406498399]
+script = ExtResource("1_jfund")
