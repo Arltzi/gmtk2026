@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://chm8t12v7d5yt"]
+
+[ext_resource type="Script" uid="uid://btt5ogsp8lpiw" path="res://src/gameplay/player/UltimatePlatformerController.gd" id="1_kh5p4"]
+[ext_resource type="Texture2D" uid="uid://cjaok3whapi0k" path="res://assets/art/characters/player/Player Placeholder Small.png" id="2_k2146"]
+[ext_resource type="Texture2D" uid="uid://c2ea6kq1h443e" path="res://assets/art/characters/player/Player Placeholder.png" id="3_sjr3t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4drs2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k2146")
+}],
+"loop": 1,
+"name": &"crouch_idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k2146")
+}],
+"loop": 1,
+"name": &"crouch_walk",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 1,
+"name": &"dash",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 1,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 0,
+"name": &"latch",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k2146")
+}],
+"loop": 0,
+"name": &"roll",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 0,
+"name": &"slide",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 1,
+"name": &"twirl",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sjr3t")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcmxd"]
+size = Vector2(12, 27)
+
+[node name="Player" type="CharacterBody2D" unique_id=726854448 node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "leftRaycast", "middleRaycast", "rightRaycast")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_kh5p4")
+PlayerSprite = NodePath("AnimatedSprite2D")
+PlayerCollider = NodePath("CollisionShape2D")
+wallJump = true
+dashType = 4
+cornerCutting = true
+leftRaycast = NodePath("lCast")
+middleRaycast = NodePath("mCast")
+rightRaycast = NodePath("rCast")
+crouch = true
+canRoll = true
+run = true
+jump = true
+idle = true
+walk = true
+slide = true
+latch = true
+falling = true
+crouch_idle = true
+crouch_walk = true
+roll = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1503684476]
+position = Vector2(0, -17)
+sprite_frames = SubResource("SpriteFrames_4drs2")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0043358644
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300806263]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_wcmxd")
+
+[node name="lCast" type="RayCast2D" parent="." unique_id=209868773]
+position = Vector2(-6, -28)
+target_position = Vector2(0, -25)
+
+[node name="mCast" type="RayCast2D" parent="." unique_id=764428094]
+position = Vector2(0, -28)
+target_position = Vector2(0, -25)
+
+[node name="rCast" type="RayCast2D" parent="." unique_id=389843568]
+position = Vector2(6, -28)
+target_position = Vector2(0, -25)
+
+[node name="lcast" type="ColorRect" parent="." unique_id=496398848]
+visible = false
+offset_left = -7.0
+offset_top = -52.0
+offset_right = -5.0
+offset_bottom = -28.0
+color = Color(1, 0.07704, 0.141602, 0.596078)
+
+[node name="mcast" type="ColorRect" parent="." unique_id=47943496]
+visible = false
+offset_left = -1.0
+offset_top = -52.0
+offset_right = 1.0
+offset_bottom = -28.0
+color = Color(0.52549, 1, 1, 0.498039)
+
+[node name="rcast" type="ColorRect" parent="." unique_id=306435496]
+visible = false
+offset_left = 5.0
+offset_top = -52.0
+offset_right = 7.0
+offset_bottom = -28.0
+color = Color(0.52549, 1, 1, 0.498039)

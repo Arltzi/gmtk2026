@@ -1,0 +1,60 @@
+{
+	"categories": [
+		{
+			"uuid": "04bcd36c-a764-4bda-863b-393e1a363d4c",
+			"title": "Programming",
+			"color": "cc620c"
+		},
+		{
+			"uuid": "99b36e1c-bfa1-4c60-8a0b-17a899467e54",
+			"title": "Art",
+			"color": "e82656"
+		},
+		{
+			"uuid": "53f8f674-1290-4e79-881d-1ce84288be16",
+			"title": "Design",
+			"color": "d4e327"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "327ce961-873f-42cc-bfb0-ef65b4d86072",
+			"title": "Todo",
+			"tasks": [
+				"57f41f9f-0bf2-43ed-8a2e-3357da270413"
+			]
+		},
+		{
+			"uuid": "f2e29a3e-da27-4f38-bf2f-7e75fe00a0af",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "9c2dad93-fb27-4395-8841-86f9f1632c7a",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "57f41f9f-0bf2-43ed-8a2e-3357da270413",
+			"title": "toggleable platforms",
+			"description": "",
+			"category": "04bcd36c-a764-4bda-863b-393e1a363d4c",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"327ce961-873f-42cc-bfb0-ef65b4d86072"
+			],
+			[
+				"f2e29a3e-da27-4f38-bf2f-7e75fe00a0af"
+			],
+			[
+				"9c2dad93-fb27-4395-8841-86f9f1632c7a"
+			]
+		]
+	}
+}
