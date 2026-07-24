@@ -34,7 +34,7 @@ class_name ToggleablePlatform
 #region FUNCTIONS
 # static, public, protected, private
 func toggle_enabled() -> void:
-  _set_enabled(not enabled)
+  enabled = not enabled
   pass
   
 func _set_enabled(enabled: bool) -> void:

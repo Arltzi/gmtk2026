@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://58ywvw2sfkbx"]
 
 [ext_resource type="Script" uid="uid://brpr2fn3x0t0j" path="res://src/gameplay/environment/toggleable_platform.gd" id="1_2fhls"]
+[ext_resource type="Script" uid="uid://dlck1gidxe0wv" path="res://src/core/main_game/base_tick_user.gd" id="2_v4tq2"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2l8ex"]
 size = Vector2(20, 20)
@@ -19,3 +20,10 @@ collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1242361590]
 shape = SubResource("RectangleShape2D_2fhls")
+
+[node name="TickElement2D" type="Node2D" parent="." unique_id=1117889777]
+script = ExtResource("2_v4tq2")
+ticks_per_signal = 4
+metadata/_custom_type_script = "uid://dlck1gidxe0wv"
+
+[connection signal="run_interactive_beat" from="TickElement2D" to="." method="toggle_enabled"]
