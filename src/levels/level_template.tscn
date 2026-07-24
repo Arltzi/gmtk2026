@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="2_88vja"]
 [ext_resource type="PackedScene" uid="uid://03vulpfxbwb8" path="res://src/levels/level_tilemap_template.tscn" id="3_88vja"]
 [ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="3_nm6nc"]
+[ext_resource type="Script" uid="uid://dil554sekk80u" path="res://src/gameplay/ui/collectibles_counter.gd" id="5_nm6nc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_88vja"]
 size = Vector2(16, 16)
@@ -27,6 +28,19 @@ texture = ExtResource("2_88vja")
 [node name="Player" parent="Entities" unique_id=726854448 instance=ExtResource("3_nm6nc")]
 position = Vector2(123, -78)
 
+[node name="Label" type="Label" parent="Entities" unique_id=983034476]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 414.0
+offset_top = -509.0
+offset_right = 629.0
+offset_bottom = -481.0
+grow_horizontal = 2
+text = "# of collectibles:"
+horizontal_alignment = 1
+script = ExtResource("5_nm6nc")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=761304463]
 position = Vector2(510, -214)
 
@@ -43,4 +57,5 @@ shape = SubResource("RectangleShape2D_88vja")
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("2_88vja")
 
+[connection signal="collectibles_updated" from="Entities/Player" to="Entities/Label" method="_on_player_collectibles_updated"]
 [connection signal="body_entered" from="CompleteLevelArea" to="." method="complete_level" flags=3 unbinds=1]
