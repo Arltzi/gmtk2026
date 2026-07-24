@@ -106,7 +106,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcmxd"]
 size = Vector2(12, 27)
 
-[node name="Player" type="CharacterBody2D" unique_id=726854448 node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "leftRaycast", "middleRaycast", "rightRaycast")]
+[node name="Player" type="CharacterBody2D" unique_id=618334850 node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "leftRaycast", "middleRaycast", "rightRaycast")]
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_kh5p4")
@@ -130,6 +130,7 @@ falling = true
 crouch_idle = true
 crouch_walk = true
 roll = true
+metadata/_custom_type_script = "uid://wkqm8hbb2718"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1503684476]
 position = Vector2(0, -17)
