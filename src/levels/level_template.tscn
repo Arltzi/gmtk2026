@@ -16,9 +16,8 @@ metadata/_custom_type_script = "uid://cc1byrm6hqyrs"
 [node name="LevelLayer" type="Node2D" parent="." unique_id=1267301956]
 
 [node name="BackgroundSprite" type="Sprite2D" parent="LevelLayer" unique_id=2103697111]
-modulate = Color(0.16078432, 0.078431375, 0.34117648, 1)
-position = Vector2(520, -236)
-scale = Vector2(4.73061, 2.7368422)
+modulate = Color(0.2341761, 0.2385065, 0.20963703, 1)
+scale = Vector2(16, 8)
 texture = ExtResource("2_88vja")
 
 [node name="TileMap" parent="LevelLayer" unique_id=1277057473 instance=ExtResource("3_88vja")]
@@ -26,7 +25,7 @@ texture = ExtResource("2_88vja")
 [node name="Entities" type="Node2D" parent="." unique_id=1117686574]
 
 [node name="Player" parent="Entities" unique_id=726854448 instance=ExtResource("3_nm6nc")]
-position = Vector2(123, -78)
+position = Vector2(-646, 381)
 
 [node name="Label" type="Label" parent="Entities" unique_id=983034476]
 anchors_preset = 5
@@ -42,7 +41,7 @@ horizontal_alignment = 1
 script = ExtResource("5_nm6nc")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=761304463]
-position = Vector2(510, -214)
+zoom = Vector2(0.5, 0.5)
 
 [node name="CompleteLevelArea" type="Area2D" parent="." unique_id=885410066]
 position = Vector2(969, -58)
@@ -57,5 +56,4 @@ shape = SubResource("RectangleShape2D_88vja")
 scale = Vector2(0.065, 0.065)
 texture = ExtResource("2_88vja")
 
-[connection signal="collectibles_updated" from="Entities/Player" to="Entities/Label" method="_on_player_collectibles_updated"]
 [connection signal="body_entered" from="CompleteLevelArea" to="." method="complete_level" flags=3 unbinds=1]

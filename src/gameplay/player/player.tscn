@@ -1,14 +1,13 @@
 [gd_scene format=3 uid="uid://chm8t12v7d5yt"]
 
-[ext_resource type="Script" uid="uid://wkqm8hbb2718" path="res://src/gameplay/player/player.gd" id="1_k2146"]
-[ext_resource type="Texture2D" uid="uid://cjaok3whapi0k" path="res://assets/art/characters/player/Player Placeholder Small.png" id="2_k2146"]
-[ext_resource type="Texture2D" uid="uid://c2ea6kq1h443e" path="res://assets/art/characters/player/Player Placeholder.png" id="3_sjr3t"]
+[ext_resource type="Script" uid="uid://btt5ogsp8lpiw" path="res://src/gameplay/player/UltimatePlatformerController.gd" id="1_k2146"]
+[ext_resource type="Texture2D" uid="uid://ce2wxjmhj22g6" path="res://assets/world/props/Character.png" id="4_sjr3t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4drs2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_k2146")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 1,
 "name": &"crouch_idle",
@@ -16,7 +15,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_k2146")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 1,
 "name": &"crouch_walk",
@@ -24,7 +23,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 1,
 "name": &"dash",
@@ -32,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 1,
 "name": &"falling",
@@ -40,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 1,
 "name": &"idle",
@@ -48,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 0,
 "name": &"jump",
@@ -56,7 +55,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 0,
 "name": &"latch",
@@ -64,7 +63,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_k2146")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 0,
 "name": &"roll",
@@ -72,7 +71,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 1,
 "name": &"run",
@@ -80,7 +79,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 0,
 "name": &"slide",
@@ -88,7 +87,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 1,
 "name": &"twirl",
@@ -96,7 +95,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_sjr3t")
+"texture": ExtResource("4_sjr3t")
 }],
 "loop": 1,
 "name": &"walk",
@@ -104,7 +103,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcmxd"]
-size = Vector2(12, 27)
+size = Vector2(42, 76)
 
 [node name="Player" type="CharacterBody2D" unique_id=682037265 node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "leftRaycast", "middleRaycast", "rightRaycast")]
 collision_layer = 4
@@ -112,69 +111,52 @@ collision_mask = 3
 script = ExtResource("1_k2146")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
-wallJump = true
-dashType = 4
-cornerCutting = true
 leftRaycast = NodePath("lCast")
 middleRaycast = NodePath("mCast")
 rightRaycast = NodePath("rCast")
-crouch = true
-canRoll = true
-run = true
-jump = true
-idle = true
-walk = true
-slide = true
-latch = true
-falling = true
-crouch_idle = true
-crouch_walk = true
-roll = true
-metadata/_custom_type_script = "uid://wkqm8hbb2718"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1503684476]
-position = Vector2(0, -17)
+position = Vector2(0, -87)
 sprite_frames = SubResource("SpriteFrames_4drs2")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.0043358644
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300806263]
-position = Vector2(0, -15)
+position = Vector2(0, -42)
 shape = SubResource("RectangleShape2D_wcmxd")
 
 [node name="lCast" type="RayCast2D" parent="." unique_id=209868773]
-position = Vector2(-6, -28)
-target_position = Vector2(0, -25)
+position = Vector2(-22, -80)
+target_position = Vector2(0, -80)
 
 [node name="mCast" type="RayCast2D" parent="." unique_id=764428094]
-position = Vector2(0, -28)
-target_position = Vector2(0, -25)
+position = Vector2(0, -80)
+target_position = Vector2(0, -80)
 
 [node name="rCast" type="RayCast2D" parent="." unique_id=389843568]
-position = Vector2(6, -28)
-target_position = Vector2(0, -25)
+position = Vector2(22, -80)
+target_position = Vector2(0, -80)
 
 [node name="lcast" type="ColorRect" parent="." unique_id=496398848]
 visible = false
-offset_left = -7.0
-offset_top = -52.0
-offset_right = -5.0
-offset_bottom = -28.0
-color = Color(1, 0.07704, 0.141602, 0.596078)
+offset_left = -23.0
+offset_top = -155.0
+offset_right = -21.0
+offset_bottom = -80.0
+color = Color(1, 0.078431375, 0.14117648, 0.59607846)
 
 [node name="mcast" type="ColorRect" parent="." unique_id=47943496]
 visible = false
 offset_left = -1.0
-offset_top = -52.0
+offset_top = -157.0
 offset_right = 1.0
-offset_bottom = -28.0
-color = Color(0.52549, 1, 1, 0.498039)
+offset_bottom = -80.0
+color = Color(1, 0.078431375, 0.14117648, 0.59607846)
 
 [node name="rcast" type="ColorRect" parent="." unique_id=306435496]
 visible = false
-offset_left = 5.0
-offset_top = -52.0
-offset_right = 7.0
-offset_bottom = -28.0
-color = Color(0.52549, 1, 1, 0.498039)
+offset_left = 21.0
+offset_top = -155.0
+offset_right = 23.0
+offset_bottom = -80.0
+color = Color(1, 0.078431375, 0.14117648, 0.59607846)

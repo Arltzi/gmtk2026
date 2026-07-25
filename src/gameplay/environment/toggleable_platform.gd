@@ -1,4 +1,4 @@
-@tool 
+@tool
 extends Node2D
 class_name ToggleablePlatform
 
@@ -12,11 +12,11 @@ class_name ToggleablePlatform
 @onready var shape : CollisionShape2D = $StaticBody2D/CollisionShape2D
 
 @export var enabled : bool = true:
-  get:
-    return enabled
-  set(value):
-    enabled = value
-    _set_enabled(value)
+	get:
+		return enabled
+	set(value):
+		enabled = value
+		_set_enabled(value)
 #endregion
 
 #region SIGNALS
@@ -34,11 +34,11 @@ class_name ToggleablePlatform
 #region FUNCTIONS
 # static, public, protected, private
 func toggle_enabled() -> void:
-  enabled = not enabled
-  pass
+	enabled = not enabled
+	pass
   
 func _set_enabled(enabled: bool) -> void:
-  sprite.modulate = Color(1,1,1,1) if enabled else Color(1,1,1,0.5)
-  shape.disabled = not enabled
-  pass
+	sprite.modulate = Color(1,1,1,1) if enabled else Color(1,1,1,0.5)
+	shape.disabled = not enabled
+	pass
 #endregion
