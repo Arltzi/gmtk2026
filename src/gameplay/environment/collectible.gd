@@ -31,9 +31,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 # static, public, protected, private
 
 func pickup(player : Player) -> void:
+	player.on_pickup(self)
 	$Sprite2D.visible = false
 	$Area2D/CollisionShape2D.disabled = true
-	player.on_pickup(self)
+	$GPUParticles2D.emitting = false
 	pass
   
 #endregion
