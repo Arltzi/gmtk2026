@@ -32,13 +32,13 @@ signal completed(Level)
 # static, public, protected, private
 
 func start_level() -> void:
-  next_level_scene = load(next_level_path)
-  # validate next_level_scene here?
-  started.emit(self)
-  pass
-  
+	if(!next_level_path.is_empty()):
+		next_level_scene = load(next_level_path)
+	# validate next_level_scene here?
+	started.emit(self)
+	pass
 
 func complete_level() -> void:
-  completed.emit(self)
-  pass
+	completed.emit(self)
+	pass
 #endregion

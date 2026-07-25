@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chm8t12v7d5yt"]
 
-[ext_resource type="Script" uid="uid://btt5ogsp8lpiw" path="res://src/gameplay/player/UltimatePlatformerController.gd" id="1_k2146"]
+[ext_resource type="Script" uid="uid://c42bfqch75on3" path="res://src/gameplay/player/player.gd" id="1_64h4j"]
 [ext_resource type="Texture2D" uid="uid://ce2wxjmhj22g6" path="res://assets/world/props/Character.png" id="4_sjr3t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4drs2"]
@@ -102,18 +102,23 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcmxd"]
-size = Vector2(42, 76)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nm6nc"]
+radius = 36.0
+height = 100.0
 
-[node name="Player" type="CharacterBody2D" unique_id=682037265 node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "leftRaycast", "middleRaycast", "rightRaycast")]
+[node name="Player" type="CharacterBody2D" unique_id=647094626 node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "leftRaycast", "middleRaycast", "rightRaycast")]
 collision_layer = 4
-collision_mask = 3
-script = ExtResource("1_k2146")
+collision_mask = 11
+script = ExtResource("1_64h4j")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
+maxSpeed = 400.0
+jumpHeight = 4.0
+terminalVelocity = 1200.0
 leftRaycast = NodePath("lCast")
 middleRaycast = NodePath("mCast")
 rightRaycast = NodePath("rCast")
+metadata/_custom_type_script = "uid://c42bfqch75on3"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1503684476]
 position = Vector2(0, -87)
@@ -122,8 +127,8 @@ animation = &"jump"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300806263]
-position = Vector2(0, -42)
-shape = SubResource("RectangleShape2D_wcmxd")
+position = Vector2(1, -50)
+shape = SubResource("CapsuleShape2D_nm6nc")
 
 [node name="lCast" type="RayCast2D" parent="." unique_id=209868773]
 position = Vector2(-22, -80)
