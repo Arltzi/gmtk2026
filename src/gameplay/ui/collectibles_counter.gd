@@ -29,5 +29,5 @@ class_name CollectiblesCounter
 
 
 func _on_player_collectibles_updated(new_val: int) -> void:
-	text = "# of collectibles: %d" % new_val
-	pass # Replace with function body.
+  text = "# of timepieces: %d" % new_val
+  pass # Replace with function body.

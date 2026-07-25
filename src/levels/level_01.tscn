@@ -1,5 +1,106 @@
-[gd_scene format=3 uid="uid://c5wrp22t3vyok"]
+[gd_scene format=4 uid="uid://c5wrp22t3vyok"]
 
 [ext_resource type="PackedScene" uid="uid://hy7twvwytp77" path="res://src/levels/level_template.tscn" id="1_gv33s"]
+[ext_resource type="Texture2D" uid="uid://4hymapmj2r1x" path="res://assets/world/props/TimeGear.png" id="2_0nnfd"]
+[ext_resource type="Texture2D" uid="uid://phpa3kr3tjwu" path="res://addons/kanban_tasks/view/documentation/4.svg" id="3_0yg4g"]
+[ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="4_07edn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07edn"]
+size = Vector2(300, 300)
 
 [node name="Level" unique_id=1273719150 instance=ExtResource("1_gv33s")]
+
+[node name="Building" type="Sprite2D" parent="LevelLayer" parent_id_path=PackedInt32Array(1267301956) index="1" unique_id=985468050]
+self_modulate = Color(0.09, 0.09, 0.09, 1)
+position = Vector2(3.0000038, -139)
+scale = Vector2(5.348789, 8.503472)
+texture = ExtResource("4_07edn")
+
+[node name="StaticEnvironment" parent="LevelLayer/TileMap" parent_id_path=PackedInt32Array(1277057473) index="0" unique_id=1741468820]
+tile_map_data = PackedByteArray("AAD+/wQAAQAJAAEAAAD//wQAAQAEAAIAAAAAAAQAAQAEAAIAAAABAAQAAQAJAAIAAADy/wcAAQABAAIAAADz/wcAAQABAAIAAAD0/wcAAQABAAIAAAD1/wcAAQABAAIAAAD2/wcAAQABAAIAAAD3/wcAAQABAAIAAAD4/wcAAQABAAIAAAD5/wcAAQABAAIAAAD6/wcAAQABAAIAAAD7/wcAAQABAAIAAAD8/wcAAQABAAIAAAD9/wcAAQABAAIAAAD+/wcAAQABAAIAAAD//wcAAQABAAIAAAAAAAcAAQABAAIAAAABAAcAAQABAAIAAAACAAcAAQABAAIAAAADAAcAAQABAAIAAAAEAAcAAQABAAIAAAAFAAcAAQABAAIAAAAGAAcAAQABAAIAAAAHAAcAAQABAAIAAAAIAAcAAQABAAIAAAAJAAcAAQABAAIAAAAKAAcAAQABAAIAAAALAAcAAQABAAIAAAAMAAcAAQABAAIAAAANAAcAAQABAAIAAADx/wcAAQAAAAIAAAAOAAcAAQACAAIAAADx/wYAAQAAAAEAAADx/wUAAQAAAAEAAADx/wQAAQAAAAEAAADx/wMAAQAAAAEAAADx/wIAAQAAAAEAAADx/wEAAQAAAAEAAADx/wAAAQAAAAEAAADx////AQAAAAEAAADx//7/AQAAAAEAAADx//3/AQAAAAEAAADx//z/AQAAAAEAAADx//v/AQAAAAEAAADx//r/AQAAAAEAAADx//n/AQAAAAEAAAAOAPj/AQACAAEAAAAOAPn/AQACAAEAAAAOAPr/AQACAAEAAAAOAPv/AQACAAEAAAAOAPz/AQACAAEAAAAOAP3/AQACAAEAAAAOAP7/AQACAAEAAAAOAP//AQACAAEAAAAOAAAAAQACAAEAAAAOAAEAAQACAAEAAAAOAAIAAQACAAEAAAAOAAMAAQACAAEAAAAOAAQAAQACAAEAAAAOAAUAAQACAAEAAAAOAAYAAQACAAEAAADx//j/AQAAAAEAAADx//f/AQAAAAAAAADy//f/AQABAAAAAADz//f/AQABAAAAAAD0//f/AQABAAAAAAD1//f/AQABAAAAAAD2//f/AQABAAAAAAD3//f/AQABAAAAAAD4//f/AQABAAAAAAD5//f/AQABAAAAAAD6//f/AQABAAAAAAD7//f/AQABAAAAAAD8//f/AQABAAAAAAD9//f/AQABAAAAAAD+//f/AQABAAAAAAD///f/AQABAAAAAAAAAPf/AQABAAAAAAABAPf/AQABAAAAAAACAPf/AQABAAAAAAADAPf/AQABAAAAAAAEAPf/AQABAAAAAAAFAPf/AQABAAAAAAAGAPf/AQABAAAAAAAHAPf/AQABAAAAAAAIAPf/AQABAAAAAAAJAPf/AQABAAAAAAAKAPf/AQABAAAAAAALAPf/AQABAAAAAAAMAPf/AQABAAAAAAANAPf/AQABAAAAAAAOAPf/AQACAAAAAAD9/wUAAQAJAAEAAAD8/wYAAQAEAAIAAAACAAUAAQAJAAIAAAADAAYAAQAEAAIAAAD//wUAAQABAAEAAAD//wYAAQABAAEAAAD+/wYAAQABAAEAAAD9/wYAAQABAAEAAAAAAAYAAQABAAEAAAABAAYAAQABAAEAAAACAAYAAQABAAEAAAABAAUAAQABAAEAAAAAAAUAAQABAAEAAAD+/wUAAQABAAEAAADy/wYAAQAEAAIAAADz/wYAAQAEAAIAAAD0/wYAAQAEAAIAAAD1/wYAAQAEAAIAAAD2/wYAAQAEAAIAAAD3/wYAAQAEAAIAAAD4/wYAAQAEAAIAAAD5/wYAAQAEAAIAAAD6/wYAAQAEAAIAAAD7/wYAAQAEAAIAAAAEAAYAAQAEAAIAAAAFAAYAAQAEAAIAAAAGAAYAAQAEAAIAAAAHAAYAAQAEAAIAAAAIAAYAAQAEAAIAAAAJAAYAAQAEAAIAAAAKAAYAAQAEAAIAAAALAAYAAQAEAAIAAAAMAAYAAQAEAAIAAAANAAYAAQAEAAIAAAA=")
+
+[node name="Clock" type="Sprite2D" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="0" unique_id=1640705176]
+position = Vector2(8, -365)
+scale = Vector2(18.880001, 18.880001)
+texture = ExtResource("2_0nnfd")
+
+[node name="LevelEntry" type="Sprite2D" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="1" unique_id=628784317]
+position = Vector2(5, 374)
+texture = ExtResource("3_0yg4g")
+
+[node name="Label" type="Label" parent="Entities/LevelEntry" index="0" unique_id=10356398]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -382.0
+offset_right = -72.0
+offset_bottom = -337.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Press E to enter"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Entities/LevelEntry" index="1" unique_id=850508820]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/LevelEntry/Area2D" index="0" unique_id=580229518]
+shape = SubResource("RectangleShape2D_07edn")
+
+[node name="Dropoff" type="Sprite2D" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="2" unique_id=1220649503]
+position = Vector2(-1073, 633)
+texture = ExtResource("4_07edn")
+
+[node name="Label" type="Label" parent="Entities/Dropoff" index="0" unique_id=1937373841]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -374.0
+offset_right = 18.0
+offset_bottom = -281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Press E to deposit 
+timepieces"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="Entities/Dropoff" index="1" unique_id=1920801315]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Dropoff/Area2D" index="0" unique_id=81440941]
+shape = SubResource("RectangleShape2D_07edn")
+
+[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="3" unique_id=726854448]
+position = Vector2(-1657, 769)
+
+[node name="TemplateCollectible" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="4" unique_id=1383793651]
+position = Vector2(199.00003, -1300.9999)
+
+[node name="Label" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="5" unique_id=983034476]
+visible = false
+offset_left = -131.0
+offset_top = -945.0
+offset_right = 118.0
+offset_bottom = -900.0
+
+[node name="Camera2D" parent="." index="2" unique_id=761304463]
+position = Vector2(0, -67)
+zoom = Vector2(0.5, 0.5)
+
+[node name="CompleteLevelArea" parent="." index="3" unique_id=718238628]
+position = Vector2(-167.99994, -1313.9999)
+
+[connection signal="body_entered" from="Entities/LevelEntry/Area2D" to="Entities/LevelEntry/Label" method="set_visible" unbinds=1 binds= [true]]
+[connection signal="body_exited" from="Entities/LevelEntry/Area2D" to="Entities/LevelEntry/Label" method="set_visible" unbinds=1 binds= [false]]
+[connection signal="body_entered" from="Entities/Dropoff/Area2D" to="Entities/Dropoff/Label" method="set_visible" unbinds=1 binds= [true]]
+[connection signal="body_exited" from="Entities/Dropoff/Area2D" to="Entities/Dropoff/Label" method="set_visible" unbinds=1 binds= [false]]
+
+[editable path="LevelLayer/TileMap"]

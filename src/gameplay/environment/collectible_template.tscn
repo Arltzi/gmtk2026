@@ -1,16 +1,104 @@
 [gd_scene format=3 uid="uid://ch6duk5i2ejs2"]
 
 [ext_resource type="Script" uid="uid://bh5kj77bnbyln" path="res://src/gameplay/environment/collectible.gd" id="1_e4fch"]
-[ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="2_vtyaj"]
-[ext_resource type="Texture2D" uid="uid://phpa3kr3tjwu" path="res://addons/kanban_tasks/view/documentation/4.svg" id="3_vtyaj"]
+[ext_resource type="Texture2D" uid="uid://4hymapmj2r1x" path="res://assets/world/props/TimeGear.png" id="2_qbw8h"]
 [ext_resource type="Material" uid="uid://dowir0kda2ofm" path="res://assets/particles/important_particles.tres" id="4_qbw8h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6wuyr"]
 
+[sub_resource type="Animation" id="Animation_cn67y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qbw8h"]
+resource_name = "wiggle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 0.8), Vector2(1, 1.2), Vector2(1, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.283185307179586, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cn67y"]
+_data = {
+&"RESET": SubResource("Animation_cn67y"),
+&"wiggle": SubResource("Animation_qbw8h")
+}
+
+[sub_resource type="Gradient" id="Gradient_qbw8h"]
+offsets = PackedFloat32Array(0, 0.359882, 0.6843658)
+colors = PackedColorArray(1, 1, 1, 1, 0.37931037, 0.37931037, 0.37931037, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cn67y"]
+gradient = SubResource("Gradient_qbw8h")
+fill = 1
+fill_from = Vector2(0.4871795, 0.5)
+
 [node name="TemplateCollectible" type="Node2D" unique_id=1383793651]
-scale = Vector2(5, 5)
+rotation = 1.4974926
+scale = Vector2(1, 0.8)
 script = ExtResource("1_e4fch")
 metadata/_custom_type_script = "uid://bh5kj77bnbyln"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1703450503]
+scale = Vector2(1.0000001, 1)
+texture = ExtResource("2_qbw8h")
+process_material = ExtResource("4_qbw8h")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1546821771]
 collision_layer = 8
@@ -20,12 +108,15 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_6wuyr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1313221963]
-self_modulate = Color(0.17308341, 0.67, 0.07370001, 1)
-scale = Vector2(0.06, 0.06)
-texture = ExtResource("2_vtyaj")
+texture = ExtResource("2_qbw8h")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1703450503]
-texture = ExtResource("3_vtyaj")
-process_material = ExtResource("4_qbw8h")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=309306160]
+reset_on_save = false
+libraries/ = SubResource("AnimationLibrary_cn67y")
+autoplay = &"wiggle"
+speed_scale = 0.355
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1144959352]
+texture = SubResource("GradientTexture2D_cn67y")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
