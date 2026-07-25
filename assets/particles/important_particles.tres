@@ -1,16 +1,16 @@
 [gd_resource type="ParticleProcessMaterial" format=3 uid="uid://dowir0kda2ofm"]
 
-[sub_resource type="Curve" id="Curve_eeaal"]
+[sub_resource type="Curve" id="Curve_qbw8h"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_0yg4g"]
-curve = SubResource("Curve_eeaal")
+curve = SubResource("Curve_qbw8h")
 
 [resource]
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(64, 64, 1)
+emission_box_extents = Vector3(16, 16, 1)
 angle_min = -89.99999
 angle_max = 90.000015
 direction = Vector3(0, -1, 0)

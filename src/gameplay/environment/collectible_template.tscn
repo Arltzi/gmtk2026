@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bh5kj77bnbyln" path="res://src/gameplay/environment/collectible.gd" id="1_e4fch"]
 [ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="2_vtyaj"]
+[ext_resource type="Texture2D" uid="uid://phpa3kr3tjwu" path="res://addons/kanban_tasks/view/documentation/4.svg" id="3_vtyaj"]
+[ext_resource type="Material" uid="uid://dowir0kda2ofm" path="res://assets/particles/important_particles.tres" id="4_qbw8h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6wuyr"]
 
@@ -21,5 +23,9 @@ shape = SubResource("CircleShape2D_6wuyr")
 self_modulate = Color(0.17308341, 0.67, 0.07370001, 1)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_vtyaj")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1703450503]
+texture = ExtResource("3_vtyaj")
+process_material = ExtResource("4_qbw8h")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
