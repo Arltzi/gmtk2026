@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://xi6tu5lf2635"]
+
+[ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="1_e7r8q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88vja"]
+size = Vector2(16, 16)
+
+[node name="CompleteLevelArea" type="Area2D" unique_id=718238628]
+scale = Vector2(5, 5)
+collision_mask = 4
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2003925794]
+shape = SubResource("RectangleShape2D_88vja")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=805543276]
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("1_e7r8q")

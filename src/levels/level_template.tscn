@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://03vulpfxbwb8" path="res://src/levels/level_tilemap_template.tscn" id="3_88vja"]
 [ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="3_nm6nc"]
 [ext_resource type="Script" uid="uid://dil554sekk80u" path="res://src/gameplay/ui/collectibles_counter.gd" id="5_nm6nc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_88vja"]
-size = Vector2(16, 16)
+[ext_resource type="PackedScene" uid="uid://ch6duk5i2ejs2" path="res://src/gameplay/environment/collectible_template.tscn" id="6_t1prb"]
+[ext_resource type="PackedScene" uid="uid://xi6tu5lf2635" path="res://src/gameplay/environment/complete_level_area.tscn" id="6_tphog"]
 
 [node name="Level" type="Node2D" unique_id=1273719150]
 script = ExtResource("1_ync2b")
@@ -31,29 +30,24 @@ position = Vector2(-646, 381)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 414.0
-offset_top = -509.0
-offset_right = 629.0
-offset_bottom = -481.0
+offset_left = -52.0
+offset_top = -497.0
+offset_right = 163.0
+offset_bottom = -469.0
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
 text = "# of collectibles:"
 horizontal_alignment = 1
 script = ExtResource("5_nm6nc")
 
+[node name="TemplateCollectible" parent="Entities/Label" unique_id=1383793651 instance=ExtResource("6_t1prb")]
+position = Vector2(121, 520)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=761304463]
 zoom = Vector2(0.5, 0.5)
 
-[node name="CompleteLevelArea" type="Area2D" parent="." unique_id=885410066]
-position = Vector2(969, -58)
-scale = Vector2(1, 2.3737464)
-collision_mask = 4
-input_pickable = false
+[node name="CompleteLevelArea" parent="." unique_id=718238628 instance=ExtResource("6_tphog")]
+position = Vector2(595, -202)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CompleteLevelArea" unique_id=1211144788]
-shape = SubResource("RectangleShape2D_88vja")
-
-[node name="Sprite2D" type="Sprite2D" parent="CompleteLevelArea" unique_id=176384612]
-scale = Vector2(0.065, 0.065)
-texture = ExtResource("2_88vja")
-
+[connection signal="collectibles_updated" from="Entities/Player" to="Entities/Label" method="_on_player_collectibles_updated"]
 [connection signal="body_entered" from="CompleteLevelArea" to="." method="complete_level" flags=3 unbinds=1]
