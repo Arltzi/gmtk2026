@@ -204,129 +204,126 @@ func _updateData():
   colliderPosLockY = col.position.y
   
   if timeToReachMaxSpeed == 0:
-    instantAccel = true
-    timeToReachMaxSpeed = 1
+	instantAccel = true
+	timeToReachMaxSpeed = 1
   elif timeToReachMaxSpeed < 0:
-    timeToReachMaxSpeed = abs(timeToReachMaxSpeed)
-    instantAccel = false
+	timeToReachMaxSpeed = abs(timeToReachMaxSpeed)
+	instantAccel = false
   else:
-    instantAccel = false
-    
+	instantAccel = false
+	
   if timeToReachZeroSpeed == 0:
-    instantStop = true
-    timeToReachZeroSpeed = 1
+	instantStop = true
+	timeToReachZeroSpeed = 1
   elif timeToReachMaxSpeed < 0:
-    timeToReachMaxSpeed = abs(timeToReachMaxSpeed)
-    instantStop = false
+	timeToReachMaxSpeed = abs(timeToReachMaxSpeed)
+	instantStop = false
   else:
-    instantStop = false
-    
+	instantStop = false
+	
   if jumps > 1:
-    jumpBuffering = 0
-    coyoteTime = 0
+	jumpBuffering = 0
+	coyoteTime = 0
   
   coyoteTime = abs(coyoteTime)
   jumpBuffering = abs(jumpBuffering)
   
   if directionalSnap:
-    instantAccel = true
-    instantStop = true
+	instantAccel = true
+	instantStop = true
   
   
   twoWayDashHorizontal = false
   twoWayDashVertical = false
   eightWayDash = false
   if dashType == 0:
-    pass
+	pass
   if dashType == 1:
-    twoWayDashHorizontal = true
+	twoWayDashHorizontal = true
   elif dashType == 2:
-    twoWayDashVertical = true
+	twoWayDashVertical = true
   elif dashType == 3:
-    twoWayDashHorizontal = true
-    twoWayDashVertical = true
+	twoWayDashHorizontal = true
+	twoWayDashVertical = true
   elif dashType == 4:
-    eightWayDash = true
-  
+	eightWayDash = true
   
 
 func _process(_delta):
   #INFO animations
   #directions
   if is_on_wall() and !is_on_floor() and latch and wallLatching and ((wallLatchingModifer and latchHold) or !wallLatchingModifer) and !jumpWasPressed:
-    latched = true
+	latched = true
   else:
-    latched = false
-    wasLatched = true
-    _setLatch(0.2, false)
-    
+	latched = false
+	wasLatched = true
+	_setLatch(0.2, false)
+	
   if rightHold and !latched:
-    anim.scale.x = animScaleLock.x
+	anim.scale.x = animScaleLock.x
   if leftHold and !latched:
-    anim.scale.x = animScaleLock.x * -1
-      
+	anim.scale.x = animScaleLock.x * -1
+	  
   #run
   if run and idle and !dashing and !crouching:
-    if abs(velocity.x) > 0.1 and is_on_floor() and !is_on_wall():
-      anim.play("run")
-      isSliding = false
-    elif abs(velocity.x) < 0.1 and is_on_floor():
-      anim.speed_scale = 1
-      anim.play("idle")
-      isSliding = false
+	if abs(velocity.x) > 0.1 and is_on_floor() and !is_on_wall():
+	  anim.play("run")
+	  isSliding = false
+	elif abs(velocity.x) < 0.1 and is_on_floor():
+	  anim.speed_scale = 1
+	  anim.play("idle")
+	  isSliding = false
   elif run and idle and walk and !dashing and !crouching:
-    if abs(velocity.x) > 0.1 and is_on_floor() and !is_on_wall():
-      if abs(velocity.x) < (maxSpeedLock):
-        anim.play("walk")
-        isSliding = false
-      else:
-        anim.play("run")
-        isSliding = false
-    elif abs(velocity.x) < 0.1 and is_on_floor():
-      anim.speed_scale = 1
-      anim.play("idle")
-      isSliding = false
-      
-  
-      
+	if abs(velocity.x) > 0.1 and is_on_floor() and !is_on_wall():
+	  if abs(velocity.x) < (maxSpeedLock):
+		anim.play("walk")
+		isSliding = false
+	  else:
+		anim.play("run")
+		isSliding = false
+	elif abs(velocity.x) < 0.1 and is_on_floor():
+	  anim.speed_scale = 1
+	  anim.play("idle")
+	  isSliding = false
+	  
   if is_on_wall() and not is_on_floor():
-    if latchHold:
-      anim.play("latch")
-    else:
-      anim.play("slide")
+	if latchHold:
+	  anim.play("latch")
+	else:
+	  anim.play("slide")
   #jump
   if velocity.y < 0 and jump and !dashing:
-    anim.speed_scale = 1
-    anim.play("jump")
-    isSliding = false
-      
+	anim.speed_scale = 1
+	anim.play("jump")
+	isSliding = false
+	  
   if velocity.y > 40 and falling and !dashing and !crouching and !isSliding and !is_on_wall():
-    anim.speed_scale = 1
-    anim.play("falling")
-    isSliding = false
-    
+	anim.speed_scale = 1
+	anim.play("falling")
+	isSliding = false
+	
   #dash
   if dashing:
-    anim.speed_scale = 1
-    anim.play("dash")
-    
+	anim.speed_scale = 1
+	anim.play("dash")
+	
   #crouch
   if crouching and !rolling:
-    if abs(velocity.x) > 10:
-      anim.speed_scale = 1
-      anim.play("crouch_walk")
-    else:
-      anim.speed_scale = 1
-      anim.play("crouch_idle")
-    
+	if abs(velocity.x) > 10:
+	  anim.speed_scale = 1
+	  anim.play("crouch_walk")
+	else:
+	  anim.speed_scale = 1
+	  anim.play("crouch_idle")
+	
   if rollTap and canRoll and roll:
-    anim.speed_scale = 1
-    anim.play("roll")
-      
+	anim.speed_scale = 1
+	anim.play("roll")
+	  
 func _physics_process(delta):
   if !dset:
-    gdelta = delta
-    dset = true
+	gdelta = delta
+	dset = true
   #INFO Input Detectio. Define your inputs from the project settings here.
   leftHold = Input.is_action_pressed("left")
   rightHold = Input.is_action_pressed("right")
@@ -349,244 +346,244 @@ func _physics_process(delta):
   #INFO Left and Right Movement
   
   if rightHold and leftHold and movementInputMonitoring:
-    if !instantStop:
-      _decelerate(delta, false)
-    else:
-      velocity.x = -0.1
+	if !instantStop:
+	  _decelerate(delta, false)
+	else:
+	  velocity.x = -0.1
   elif rightHold and movementInputMonitoring.x:
-    if velocity.x > maxSpeed or instantAccel:
-      velocity.x = maxSpeed
-    else:
-      velocity.x += acceleration * delta
-    if velocity.x < 0:
-      if !instantStop:
-        _decelerate(delta, false)
-      else:
-        velocity.x = -0.1
+	if velocity.x > maxSpeed or instantAccel:
+	  velocity.x = maxSpeed
+	else:
+	  velocity.x += acceleration * delta
+	if velocity.x < 0:
+	  if !instantStop:
+		_decelerate(delta, false)
+	  else:
+		velocity.x = -0.1
   elif leftHold and movementInputMonitoring.y:
-    if velocity.x < -maxSpeed or instantAccel:
-      velocity.x = -maxSpeed
-    else:
-      velocity.x -= acceleration * delta
-    if velocity.x > 0:
-      if !instantStop:
-        _decelerate(delta, false)
-      else:
-        velocity.x = 0.1
-        
+	if velocity.x < -maxSpeed or instantAccel:
+	  velocity.x = -maxSpeed
+	else:
+	  velocity.x -= acceleration * delta
+	if velocity.x > 0:
+	  if !instantStop:
+		_decelerate(delta, false)
+	  else:
+		velocity.x = 0.1
+		
   if velocity.x > 0 and !is_on_wall():
-    wasMovingR = true
+	wasMovingR = true
   elif velocity.x < 0 and !is_on_wall():
-    wasMovingR = false
-    
+	wasMovingR = false
+	
   if rightTap:
-    wasPressingR = true
+	wasPressingR = true
   if leftTap:
-    wasPressingR = false
+	wasPressingR = false
   
   if runningModifier and !runHold:
-    maxSpeed = maxSpeedLock / 2
+	maxSpeed = maxSpeedLock / 2
   elif is_on_floor(): 
-    maxSpeed = maxSpeedLock
+	maxSpeed = maxSpeedLock
   
   if !(leftHold or rightHold):
-    if !instantStop:
-      _decelerate(delta, false)
-    else:
-      velocity.x = 0
-      
+	if !instantStop:
+	  _decelerate(delta, false)
+	else:
+	  velocity.x = 0
+	  
   #INFO Crouching
   if crouch:
-    if downHold and is_on_floor():
-      crouching = true
-    elif !downHold and ((runHold and runningModifier) or !runningModifier) and !rolling:
-      crouching = false
-      
+	if downHold and is_on_floor():
+	  crouching = true
+	elif !downHold and ((runHold and runningModifier) or !runningModifier) and !rolling:
+	  crouching = false
+	  
   if !is_on_floor():
-    crouching = false
-      
+	crouching = false
+	  
   if crouching:
-    maxSpeed = maxSpeedLock / 2
-    col.scale.y = colliderScaleLockY / 2
-    col.position.y = colliderPosLockY + (8 * colliderScaleLockY)
+	maxSpeed = maxSpeedLock / 2
+	col.scale.y = colliderScaleLockY / 2
+	col.position.y = colliderPosLockY + (8 * colliderScaleLockY)
   else:
-    maxSpeed = maxSpeedLock
-    col.scale.y = colliderScaleLockY
-    col.position.y = colliderPosLockY
-    
+	maxSpeed = maxSpeedLock
+	col.scale.y = colliderScaleLockY
+	col.position.y = colliderPosLockY
+	
   #INFO Rolling
   if canRoll and is_on_floor() and rollTap and crouching:
-    _rollingTime(0.75)
-    if wasPressingR and !(upHold):
-      velocity.y = 0
-      velocity.x = maxSpeedLock * rollLength
-      dashCount += -1
-      movementInputMonitoring = Vector2(false, false)
-      _inputPauseReset(rollLength * 0.0625)
-    elif !(upHold):
-      velocity.y = 0
-      velocity.x = -maxSpeedLock * rollLength
-      dashCount += -1
-      movementInputMonitoring = Vector2(false, false)
-      _inputPauseReset(rollLength * 0.0625)
-    
+	_rollingTime(0.75)
+	if wasPressingR and !(upHold):
+	  velocity.y = 0
+	  velocity.x = maxSpeedLock * rollLength
+	  dashCount += -1
+	  movementInputMonitoring = Vector2(false, false)
+	  _inputPauseReset(rollLength * 0.0625)
+	elif !(upHold):
+	  velocity.y = 0
+	  velocity.x = -maxSpeedLock * rollLength
+	  dashCount += -1
+	  movementInputMonitoring = Vector2(false, false)
+	  _inputPauseReset(rollLength * 0.0625)
+	
   if canRoll and rolling:
-    #if you want your player to become immune or do something else while rolling, add that here.
-    pass
-      
+	#if you want your player to become immune or do something else while rolling, add that here.
+	pass
+	  
   #INFO Jump and Gravity
   if velocity.y > 0:
-    appliedGravity = gravityScale * descendingGravityFactor
+	appliedGravity = gravityScale * descendingGravityFactor
   else:
-    appliedGravity = gravityScale
+	appliedGravity = gravityScale
   
   if is_on_wall() and !groundPounding:
-    appliedTerminalVelocity = terminalVelocity / wallSliding
-    if wallLatching and ((wallLatchingModifer and latchHold) or !wallLatchingModifer):
-      appliedGravity = 0
-      
-      if velocity.y < 0:
-        velocity.y += 200
-      if velocity.y > 0:
-        velocity.y = 0
-        
-      if wallLatchingModifer and latchHold and movementInputMonitoring == Vector2(true, true):
-        velocity.x = 0
-      
-    elif wallSliding != 1 and velocity.y > 0:
-      appliedGravity = appliedGravity / wallSliding
+	appliedTerminalVelocity = terminalVelocity / wallSliding
+	if wallLatching and ((wallLatchingModifer and latchHold) or !wallLatchingModifer):
+	  appliedGravity = 0
+	  
+	  if velocity.y < 0:
+		velocity.y += 200
+	  if velocity.y > 0:
+		velocity.y = 0
+		
+	  if wallLatchingModifer and latchHold and movementInputMonitoring == Vector2(true, true):
+		velocity.x = 0
+	  
+	elif wallSliding != 1 and velocity.y > 0:
+	  appliedGravity = appliedGravity / wallSliding
   elif !is_on_wall() and !groundPounding:
-    appliedTerminalVelocity = terminalVelocity
+	appliedTerminalVelocity = terminalVelocity
   
   if gravityActive:
-    if velocity.y < appliedTerminalVelocity:
-      velocity.y += appliedGravity
-    elif velocity.y > appliedTerminalVelocity:
-        velocity.y = appliedTerminalVelocity
-    
+	if velocity.y < appliedTerminalVelocity:
+	  velocity.y += appliedGravity
+	elif velocity.y > appliedTerminalVelocity:
+		velocity.y = appliedTerminalVelocity
+	
   if shortHopAkaVariableJumpHeight and jumpRelease and velocity.y < 0:
-    velocity.y = velocity.y / 2
+	velocity.y = velocity.y / 2
   
   if jumps == 1:
-    if !is_on_floor() and !is_on_wall():
-      if coyoteTime > 0:
-        coyoteActive = true
-        _coyoteTime()
-        
-    if jumpTap and !is_on_wall():
-      if coyoteActive:
-        coyoteActive = false
-        _jump()
-      if jumpBuffering > 0:
-        jumpWasPressed = true
-        _bufferJump()
-      elif jumpBuffering == 0 and coyoteTime == 0 and is_on_floor():
-        _jump()	
-    elif jumpTap and is_on_wall() and !is_on_floor():
-      if wallJump and !latched:
-        _wallJump()
-      elif wallJump and latched:
-        _wallJump()
-    elif jumpTap and is_on_floor():
-      _jump()
-    
-    
-      
-    if is_on_floor():
-      jumpCount = jumps
-      coyoteActive = true
-      if jumpWasPressed:
-        _jump()
+	if !is_on_floor() and !is_on_wall():
+	  if coyoteTime > 0:
+		coyoteActive = true
+		_coyoteTime()
+		
+	if jumpTap and !is_on_wall():
+	  if coyoteActive:
+		coyoteActive = false
+		_jump()
+	  if jumpBuffering > 0:
+		jumpWasPressed = true
+		_bufferJump()
+	  elif jumpBuffering == 0 and coyoteTime == 0 and is_on_floor():
+		_jump()	
+	elif jumpTap and is_on_wall() and !is_on_floor():
+	  if wallJump and !latched:
+		_wallJump()
+	  elif wallJump and latched:
+		_wallJump()
+	elif jumpTap and is_on_floor():
+	  _jump()
+	
+	
+	  
+	if is_on_floor():
+	  jumpCount = jumps
+	  coyoteActive = true
+	  if jumpWasPressed:
+		_jump()
 
   elif jumps > 1:
-    if is_on_floor():
-      jumpCount = jumps
-    if jumpTap and jumpCount > 0 and !is_on_wall():
-      velocity.y = -jumpMagnitude
-      jumpCount = jumpCount - 1
-      _endGroundPound()
-    elif jumpTap and is_on_wall() and wallJump:
-      _wallJump()
-      
-      
+	if is_on_floor():
+	  jumpCount = jumps
+	if jumpTap and jumpCount > 0 and !is_on_wall():
+	  velocity.y = -jumpMagnitude
+	  jumpCount = jumpCount - 1
+	  _endGroundPound()
+	elif jumpTap and is_on_wall() and wallJump:
+	  _wallJump()
+	  
+	  
   #INFO dashing
   if is_on_floor():
-    dashCount = dashes
+	dashCount = dashes
   if eightWayDash and dashTap and dashCount > 0 and !rolling:
-    var input_direction = Input.get_vector("left", "right", "up", "down")
-    var dTime = 0.0625 * dashLength
-    _dashingTime(dTime)
-    _pauseGravity(dTime)
-    velocity = dashMagnitude * input_direction
-    dashCount += -1
-    movementInputMonitoring = Vector2(false, false)
-    _inputPauseReset(dTime)
+	var input_direction = Input.get_vector("left", "right", "up", "down")
+	var dTime = 0.0625 * dashLength
+	_dashingTime(dTime)
+	_pauseGravity(dTime)
+	velocity = dashMagnitude * input_direction
+	dashCount += -1
+	movementInputMonitoring = Vector2(false, false)
+	_inputPauseReset(dTime)
   
   if twoWayDashVertical and dashTap and dashCount > 0 and !rolling:
-    var dTime = 0.0625 * dashLength
-    if upHold and downHold:
-      _placeHolder()
-    elif upHold:
-      _dashingTime(dTime)
-      _pauseGravity(dTime)
-      velocity.x = 0
-      velocity.y = -dashMagnitude
-      dashCount += -1
-      movementInputMonitoring = Vector2(false, false)
-      _inputPauseReset(dTime)
-    elif downHold and dashCount > 0:
-      _dashingTime(dTime)
-      _pauseGravity(dTime)
-      velocity.x = 0
-      velocity.y = dashMagnitude
-      dashCount += -1
-      movementInputMonitoring = Vector2(false, false)
-      _inputPauseReset(dTime)
+	var dTime = 0.0625 * dashLength
+	if upHold and downHold:
+	  _placeHolder()
+	elif upHold:
+	  _dashingTime(dTime)
+	  _pauseGravity(dTime)
+	  velocity.x = 0
+	  velocity.y = -dashMagnitude
+	  dashCount += -1
+	  movementInputMonitoring = Vector2(false, false)
+	  _inputPauseReset(dTime)
+	elif downHold and dashCount > 0:
+	  _dashingTime(dTime)
+	  _pauseGravity(dTime)
+	  velocity.x = 0
+	  velocity.y = dashMagnitude
+	  dashCount += -1
+	  movementInputMonitoring = Vector2(false, false)
+	  _inputPauseReset(dTime)
   
   if twoWayDashHorizontal and dashTap and dashCount > 0 and !rolling:
-    var dTime = 0.0625 * dashLength
-    if wasPressingR and !(upHold or downHold):
-      velocity.y = 0
-      velocity.x = dashMagnitude
-      _pauseGravity(dTime)
-      _dashingTime(dTime)
-      dashCount += -1
-      movementInputMonitoring = Vector2(false, false)
-      _inputPauseReset(dTime)
-    elif !(upHold or downHold):
-      velocity.y = 0
-      velocity.x = -dashMagnitude
-      _pauseGravity(dTime)
-      _dashingTime(dTime)
-      dashCount += -1
-      movementInputMonitoring = Vector2(false, false)
-      _inputPauseReset(dTime)
-      
+	var dTime = 0.0625 * dashLength
+	if wasPressingR and !(upHold or downHold):
+	  velocity.y = 0
+	  velocity.x = dashMagnitude
+	  _pauseGravity(dTime)
+	  _dashingTime(dTime)
+	  dashCount += -1
+	  movementInputMonitoring = Vector2(false, false)
+	  _inputPauseReset(dTime)
+	elif !(upHold or downHold):
+	  velocity.y = 0
+	  velocity.x = -dashMagnitude
+	  _pauseGravity(dTime)
+	  _dashingTime(dTime)
+	  dashCount += -1
+	  movementInputMonitoring = Vector2(false, false)
+	  _inputPauseReset(dTime)
+	  
   if dashing and velocity.x > 0 and leftTap and dashCancel:
-    velocity.x = 0
+	velocity.x = 0
   if dashing and velocity.x < 0 and rightTap and dashCancel:
-    velocity.x = 0
+	velocity.x = 0
   
   #INFO Corner Cutting
   if cornerCutting:
-    if velocity.y < 0 and leftRaycast.is_colliding() and !rightRaycast.is_colliding() and !middleRaycast.is_colliding():
-      position.x += correctionAmount
-    if velocity.y < 0 and !leftRaycast.is_colliding() and rightRaycast.is_colliding() and !middleRaycast.is_colliding():
-      position.x -= correctionAmount
-      
+	if velocity.y < 0 and leftRaycast.is_colliding() and !rightRaycast.is_colliding() and !middleRaycast.is_colliding():
+	  position.x += correctionAmount
+	if velocity.y < 0 and !leftRaycast.is_colliding() and rightRaycast.is_colliding() and !middleRaycast.is_colliding():
+	  position.x -= correctionAmount
+	  
   #INFO Ground Pound
   if groundPound and downTap and !is_on_floor() and !is_on_wall():
-    groundPounding = true
-    gravityActive = false
-    velocity.y = 0
-    await get_tree().create_timer(groundPoundPause).timeout
-    _groundPound()
+	groundPounding = true
+	gravityActive = false
+	velocity.y = 0
+	await get_tree().create_timer(groundPoundPause).timeout
+	_groundPound()
   if is_on_floor() and groundPounding:
-    _endGroundPound()
+	_endGroundPound()
   move_and_slide()
   
   if upToCancel and upHold and groundPound:
-    _endGroundPound()
+	_endGroundPound()
   
 func _bufferJump():
   await get_tree().create_timer(jumpBuffering).timeout
@@ -600,10 +597,10 @@ func _coyoteTime():
   
 func _jump():
   if jumpCount > 0:
-    velocity.y = -jumpMagnitude
-    jumpCount += -1
-    jumpWasPressed = false
-    
+	velocity.y = -jumpMagnitude
+	jumpCount += -1
+	jumpWasPressed = false
+	
 func _wallJump():
   latched = false
   var horizontalWallKick = abs(jumpMagnitude * cos(wallKickAngle * (PI / 180)))
@@ -611,19 +608,19 @@ func _wallJump():
   velocity.y = -verticalWallKick
   var dir = 1
   if wasMovingR:
-    velocity.x = -horizontalWallKick  * dir
+	velocity.x = -horizontalWallKick  * dir
   else:
-    velocity.x = horizontalWallKick * dir
+	velocity.x = horizontalWallKick * dir
   if inputPauseAfterWallJump != 0:
-    movementInputMonitoring = Vector2(false, false)
-    if wallLatchingModifer and latchHold:
-      movementInputMonitoring = Vector2(true, true)
-    _inputPauseReset(inputPauseAfterWallJump)
-      
+	movementInputMonitoring = Vector2(false, false)
+	if wallLatchingModifer and latchHold:
+	  movementInputMonitoring = Vector2(true, true)
+	_inputPauseReset(inputPauseAfterWallJump)
+	  
 func _setLatch(delay, setBool):
   await get_tree().create_timer(delay).timeout
   wasLatched = setBool
-      
+	  
 func _inputPauseReset(time):
   await get_tree().create_timer(time).timeout
   movementInputMonitoring = Vector2(true, true)
@@ -631,12 +628,12 @@ func _inputPauseReset(time):
 
 func _decelerate(delta, vertical):
   if !vertical:
-    if velocity.x > 0:
-      velocity.x += deceleration * delta
-    elif velocity.x < 0:
-      velocity.x -= deceleration * delta
+	if velocity.x > 0:
+	  velocity.x += deceleration * delta
+	elif velocity.x < 0:
+	  velocity.x -= deceleration * delta
   elif vertical and velocity.y > 0:
-    velocity.y += deceleration * delta
+	velocity.y += deceleration * delta
 
 
 func _pauseGravity(time):
