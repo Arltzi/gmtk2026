@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+AudioManager="*uid://c3nmyai47dfrj"
 TickManager="*uid://cxha5g28ldss1"
 LevelLoader="*uid://b246lksuu6la2"
 ClockManager="*uid://dpa2f3tc4d1ag"

@@ -3,10 +3,13 @@ extends Node2D # Change to Control if this is a UI element
 # Drag your hand nodes into these slots in the Inspector
 @export var hour_hand: Node2D
 @export var minute_hand: Node2D
+const LEVEL_MUSIC = preload("res://assets/audio/music/COUNTDOWN.wav")
 
 func _ready() -> void:
 	# Listen for the signal from the ClockManager autoload
 	ClockManager.time_updated.connect(_update_clock_hands)
+	AudioManager.play_music(LEVEL_MUSIC)
+
 
 func _update_clock_hands(hour: int, minute: int) -> void:
 	if not hour_hand or not minute_hand:
