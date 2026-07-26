@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://dil554sekk80u" path="res://src/gameplay/ui/collectibles_counter.gd" id="5_l1ksh"]
 [ext_resource type="PackedScene" uid="uid://ch6duk5i2ejs2" path="res://src/gameplay/environment/collectible_template.tscn" id="6_erces"]
 [ext_resource type="Texture2D" uid="uid://c22akkfnhhlbj" path="res://assets/world/props/Piller_Front.png" id="7_2l1so"]
+[ext_resource type="Script" uid="uid://cs8yha4efhxhy" path="res://src/levels/camera_2d.gd" id="9_l1ksh"]
+[ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="10_erces"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npo7k"]
 texture = ExtResource("3_2l1so")
@@ -271,3 +273,10 @@ metadata/_edit_use_anchors_ = true
 [node name="PillerFront" type="Sprite2D" parent="." unique_id=1650177895]
 position = Vector2(1771, -313)
 texture = ExtResource("7_2l1so")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2093524077]
+position_smoothing_enabled = true
+script = ExtResource("9_l1ksh")
+
+[node name="Player" parent="." unique_id=647094626 instance=ExtResource("10_erces")]
+position = Vector2(-214, 373)
