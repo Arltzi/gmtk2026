@@ -1,33 +1,39 @@
 [gd_scene format=4 uid="uid://c5wrp22t3vyok"]
 
-[ext_resource type="PackedScene" uid="uid://hy7twvwytp77" path="res://src/levels/level_template.tscn" id="1_gv33s"]
-[ext_resource type="Texture2D" uid="uid://phpa3kr3tjwu" path="res://addons/kanban_tasks/view/documentation/4.svg" id="3_0yg4g"]
+[ext_resource type="Script" uid="uid://cc1byrm6hqyrs" path="res://src/levels/level.gd" id="1_rrwkc"]
+[ext_resource type="Texture2D" uid="uid://c1dbliv46jyti" path="res://assets/world/backgrounds/flat_BG.png" id="2_rrwkc"]
 [ext_resource type="PackedScene" uid="uid://cx0505wwk20dl" path="res://src/gameplay/environment/clock.tscn" id="3_07edn"]
-[ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="4_07edn"]
+[ext_resource type="PackedScene" uid="uid://03vulpfxbwb8" path="res://src/levels/level_tilemap_template.tscn" id="3_k4f7h"]
+[ext_resource type="Texture2D" uid="uid://bfagb3vjjm8ur" path="res://assets/world/props/Big_clock_Door.png" id="5_83j2n"]
+[ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="6_12hn5"]
+[ext_resource type="Texture2D" uid="uid://dt7w0qpnttp0m" path="res://assets/world/props/TimeGear_reciver.png" id="6_k4f7h"]
+[ext_resource type="Script" uid="uid://dil554sekk80u" path="res://src/gameplay/ui/collectibles_counter.gd" id="7_hjd8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07edn"]
 size = Vector2(300, 300)
 
-[node name="Level" unique_id=1273719150 instance=ExtResource("1_gv33s")]
+[node name="Level" type="Node2D" unique_id=1273719150]
+script = ExtResource("1_rrwkc")
+metadata/_custom_type_script = "uid://cc1byrm6hqyrs"
 
-[node name="Building" type="Sprite2D" parent="LevelLayer" parent_id_path=PackedInt32Array(1267301956) index="1" unique_id=985468050]
-self_modulate = Color(0.09, 0.09, 0.09, 1)
-position = Vector2(3.0000038, -139)
-scale = Vector2(5.348789, 8.503472)
-texture = ExtResource("4_07edn")
+[node name="LevelLayer" type="Node2D" parent="." unique_id=1267301956]
 
-[node name="StaticEnvironment" parent="LevelLayer/TileMap" parent_id_path=PackedInt32Array(1277057473) index="0" unique_id=1741468820]
-tile_map_data = PackedByteArray("AAD+/wQAAQAJAAEAAAD//wQAAQAEAAIAAAAAAAQAAQAEAAIAAAABAAQAAQAJAAIAAAAAAPf/AQABAAAAAAAOAP//AQACAAEAAADy/wcAAQABAAIAAADz/wcAAQABAAIAAAD0/wcAAQABAAIAAAD1/wcAAQABAAIAAAD2/wcAAQABAAIAAAD3/wcAAQABAAIAAAD4/wcAAQABAAIAAAD5/wcAAQABAAIAAAD6/wcAAQABAAIAAAD7/wcAAQABAAIAAAD8/wcAAQABAAIAAAD9/wcAAQABAAIAAAD+/wcAAQABAAIAAAD//wcAAQABAAIAAAAAAAcAAQABAAIAAAABAAcAAQABAAIAAAACAAcAAQABAAIAAAADAAcAAQABAAIAAAAEAAcAAQABAAIAAAAFAAcAAQABAAIAAAAGAAcAAQABAAIAAAAHAAcAAQABAAIAAAAIAAcAAQABAAIAAAAJAAcAAQABAAIAAAAKAAcAAQABAAIAAAALAAcAAQABAAIAAAAMAAcAAQABAAIAAAANAAcAAQABAAIAAADx/wcAAQAAAAIAAAAOAAcAAQACAAIAAADx/wYAAQAAAAEAAADx/wUAAQAAAAEAAADx/wQAAQAAAAEAAADx/wMAAQAAAAEAAADx/wIAAQAAAAEAAADx/wEAAQAAAAEAAADx/wAAAQAAAAEAAADx////AQAAAAEAAADx//7/AQAAAAEAAADx//3/AQAAAAEAAADx//z/AQAAAAEAAADx//v/AQAAAAEAAADx//r/AQAAAAEAAADx//n/AQAAAAEAAAAOAPj/AQACAAEAAAAOAPn/AQACAAEAAAAOAPr/AQACAAEAAAAOAPv/AQACAAEAAAAOAPz/AQACAAEAAAAOAP3/AQACAAEAAAAOAP7/AQACAAEAAAAOAAAAAQACAAEAAAAOAAEAAQACAAEAAAAOAAIAAQACAAEAAAAOAAMAAQACAAEAAAAOAAQAAQACAAEAAAAOAAUAAQACAAEAAAAOAAYAAQACAAEAAADx//j/AQAAAAEAAADx//f/AQAAAAAAAADy//f/AQABAAAAAADz//f/AQABAAAAAAD0//f/AQABAAAAAAD1//f/AQABAAAAAAD2//f/AQABAAAAAAD3//f/AQABAAAAAAD4//f/AQABAAAAAAD5//f/AQABAAAAAAD6//f/AQABAAAAAAD7//f/AQABAAAAAAD8//f/AQABAAAAAAD9//f/AQABAAAAAAD+//f/AQABAAAAAAD///f/AQABAAAAAAABAPf/AQABAAAAAAACAPf/AQABAAAAAAADAPf/AQABAAAAAAAEAPf/AQABAAAAAAAFAPf/AQABAAAAAAAGAPf/AQABAAAAAAAHAPf/AQABAAAAAAAIAPf/AQABAAAAAAAJAPf/AQABAAAAAAAKAPf/AQABAAAAAAALAPf/AQABAAAAAAAMAPf/AQABAAAAAAANAPf/AQABAAAAAAAOAPf/AQACAAAAAAD9/wUAAQAJAAEAAAD8/wYAAQAEAAIAAAACAAUAAQAJAAIAAAADAAYAAQAEAAIAAAD//wUAAQABAAEAAAD//wYAAQABAAEAAAD+/wYAAQABAAEAAAD9/wYAAQABAAEAAAAAAAYAAQABAAEAAAABAAYAAQABAAEAAAACAAYAAQABAAEAAAABAAUAAQABAAEAAAAAAAUAAQABAAEAAAD+/wUAAQABAAEAAADy/wYAAQAEAAIAAADz/wYAAQAEAAIAAAD0/wYAAQAEAAIAAAD1/wYAAQAEAAIAAAD2/wYAAQAEAAIAAAD3/wYAAQAEAAIAAAD4/wYAAQAEAAIAAAD5/wYAAQAEAAIAAAD6/wYAAQAEAAIAAAD7/wYAAQAEAAIAAAAEAAYAAQAEAAIAAAAFAAYAAQAEAAIAAAAGAAYAAQAEAAIAAAAHAAYAAQAEAAIAAAAIAAYAAQAEAAIAAAAJAAYAAQAEAAIAAAAKAAYAAQAEAAIAAAALAAYAAQAEAAIAAAAMAAYAAQAEAAIAAAANAAYAAQAEAAIAAAA=")
+[node name="BackgroundSprite" type="Sprite2D" parent="LevelLayer" unique_id=2103697111]
+texture = ExtResource("2_rrwkc")
 
-[node name="Clock" parent="LevelLayer/TileMap" parent_id_path=PackedInt32Array(1277057473) index="1" unique_id=836341655 instance=ExtResource("3_07edn")]
-position = Vector2(0, -471.00003)
-scale = Vector2(0.36000055, 0.3740874)
+[node name="TileMap" parent="LevelLayer" unique_id=1277057473 instance=ExtResource("3_k4f7h")]
 
-[node name="LevelEntry" type="Sprite2D" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="0" unique_id=628784317]
-position = Vector2(5, 374)
-texture = ExtResource("3_0yg4g")
+[node name="StaticEnvironment" parent="LevelLayer/TileMap" index="0" unique_id=1741468820]
+tile_map_data = PackedByteArray("AADv//b/AQAAAAAAAADv//f/AQAAAAEAAADv//j/AQAAAAEAAADv//n/AQAAAAEAAADv//r/AQAAAAEAAADv//v/AQAAAAEAAADv//z/AQAAAAEAAADv//3/AQAAAAEAAADv//7/AQAAAAEAAADv////AQAAAAEAAADv/wAAAQAAAAEAAADv/wEAAQAAAAEAAADv/wIAAQAAAAEAAADv/wMAAQAAAAEAAADv/wQAAQAAAAEAAADv/wUAAQAAAAEAAADv/wYAAQAAAAEAAADv/wcAAQAAAAIAAADw//b/AQABAAAAAADw//f/AQADAAAAAADw//j/AQADAAEAAADw//n/AQADAAEAAADw//r/AQADAAEAAADw//v/AQADAAEAAADw//z/AQADAAEAAADw//3/AQADAAEAAADw//7/AQADAAEAAADw////AQADAAEAAADw/wAAAQADAAEAAADw/wEAAQADAAEAAADw/wIAAQADAAEAAADw/wMAAQADAAEAAADw/wQAAQADAAEAAADw/wUAAQADAAEAAADw/wYAAQADAAIAAADw/wcAAQABAAIAAADx//b/AQABAAAAAADx//f/AQABAAIAAADx/wYAAQAEAAIAAADx/wcAAQABAAIAAADy//b/AQABAAAAAADy//f/AQABAAIAAADy/wYAAQAEAAIAAADy/wcAAQABAAIAAADz//b/AQABAAAAAADz//f/AQABAAIAAADz/wYAAQAEAAIAAADz/wcAAQABAAIAAAD0//b/AQABAAAAAAD0//f/AQABAAIAAAD0/wYAAQAEAAIAAAD0/wcAAQABAAIAAAD1//b/AQABAAAAAAD1//f/AQABAAIAAAD1/wYAAQAEAAIAAAD1/wcAAQABAAIAAAD2//b/AQABAAAAAAD2//f/AQABAAIAAAD2/wYAAQAEAAIAAAD2/wcAAQABAAIAAAD3//b/AQABAAAAAAD3//f/AQABAAIAAAD3/wYAAQAEAAIAAAD3/wcAAQABAAIAAAD4//b/AQABAAAAAAD4//f/AQABAAIAAAD4/wYAAQAEAAIAAAD4/wcAAQABAAIAAAD5//b/AQABAAAAAAD5//f/AQABAAIAAAD5/wYAAQAEAAIAAAD5/wcAAQABAAIAAAD6//b/AQABAAAAAAD6//f/AQAEAAAAAAD6/wYAAQAEAAIAAAD6/wcAAQABAAIAAAD7//b/AQABAAAAAAD7//f/AQAEAAAAAAD7/wYAAQAEAAIAAAD7/wcAAQABAAIAAAD8//b/AQABAAAAAAD8//f/AQAEAAAAAAD8/wYAAQAEAAIAAAD8/wcAAQABAAIAAAD9//b/AQABAAAAAAD9//f/AQAEAAAAAAD9/wUAAQAJAAEAAAD9/wYAAQABAAEAAAD9/wcAAQABAAIAAAD+//b/AQABAAAAAAD+//f/AQAEAAAAAAD+/wQAAQAJAAEAAAD+/wUAAQABAAEAAAD+/wYAAQABAAEAAAD+/wcAAQABAAIAAAD///b/AQABAAAAAAD///f/AQAEAAAAAAD//wQAAQAEAAIAAAD//wUAAQABAAEAAAD//wYAAQABAAEAAAD//wcAAQABAAIAAAAAAPb/AQABAAAAAAAAAPf/AQAEAAAAAAAAAAQAAQAEAAIAAAAAAAUAAQABAAEAAAAAAAYAAQABAAEAAAAAAAcAAQABAAIAAAABAPb/AQABAAAAAAABAPf/AQAEAAAAAAABAAQAAQAJAAIAAAABAAUAAQABAAEAAAABAAYAAQABAAEAAAABAAcAAQABAAIAAAACAPb/AQABAAAAAAACAPf/AQAEAAAAAAACAAUAAQAJAAIAAAACAAYAAQABAAEAAAACAAcAAQABAAIAAAADAPb/AQABAAAAAAADAPf/AQAEAAAAAAADAAYAAQAEAAIAAAADAAcAAQABAAIAAAAEAPb/AQABAAAAAAAEAPf/AQAEAAAAAAAEAAYAAQAEAAIAAAAEAAcAAQABAAIAAAAFAPb/AQABAAAAAAAFAPf/AQAEAAAAAAAFAAYAAQAEAAIAAAAFAAcAAQABAAIAAAAGAPb/AQABAAAAAAAGAPf/AQAEAAAAAAAGAAYAAQAEAAIAAAAGAAcAAQABAAIAAAAHAPb/AQABAAAAAAAHAPf/AQAEAAAAAAAHAAYAAQAEAAIAAAAHAAcAAQABAAIAAAAIAPb/AQABAAAAAAAIAPf/AQAEAAAAAAAIAAYAAQAEAAIAAAAIAAcAAQABAAIAAAAJAPb/AQABAAAAAAAJAPf/AQAEAAAAAAAJAAYAAQAEAAIAAAAJAAcAAQABAAIAAAAKAPb/AQABAAAAAAAKAPf/AQAEAAAAAAAKAAYAAQAEAAIAAAAKAAcAAQABAAIAAAALAPb/AQABAAAAAAALAPf/AQAEAAAAAAALAAYAAQAEAAIAAAALAAcAAQABAAIAAAAMAPb/AQABAAAAAAAMAPf/AQAEAAAAAAAMAAYAAQAEAAIAAAAMAAcAAQABAAIAAAANAPb/AQABAAAAAAANAPf/AQAEAAAAAAANAAYAAQAEAAIAAAANAAcAAQABAAIAAAAOAPb/AQABAAAAAAAOAPf/AQAEAAAAAAAOAAYAAQAEAAIAAAAOAAcAAQABAAIAAAAPAPb/AQABAAAAAAAPAPf/AQAFAAAAAAAPAPj/AQAFAAEAAAAPAPn/AQAFAAEAAAAPAPr/AQAFAAEAAAAPAPv/AQAFAAEAAAAPAPz/AQAFAAEAAAAPAP3/AQAFAAEAAAAPAP7/AQAFAAEAAAAPAP//AQAFAAEAAAAPAAAAAQAFAAEAAAAPAAEAAQAFAAEAAAAPAAIAAQAFAAEAAAAPAAMAAQAFAAEAAAAPAAQAAQAFAAEAAAAPAAUAAQAFAAEAAAAPAAYAAQAFAAIAAAAPAAcAAQABAAIAAAAQAPb/AQACAAAAAAAQAPf/AQACAAEAAAAQAPj/AQACAAEAAAAQAPn/AQACAAEAAAAQAPr/AQACAAEAAAAQAPv/AQACAAEAAAAQAPz/AQACAAEAAAAQAP3/AQACAAEAAAAQAP7/AQACAAEAAAAQAP//AQACAAEAAAAQAAAAAQACAAEAAAAQAAEAAQACAAEAAAAQAAIAAQACAAEAAAAQAAMAAQACAAEAAAAQAAQAAQACAAEAAAAQAAUAAQACAAEAAAAQAAYAAQACAAEAAAAQAAcAAQACAAIAAAA=")
 
-[node name="Label" type="Label" parent="Entities/LevelEntry" index="0" unique_id=10356398]
+[node name="Clock" parent="LevelLayer/TileMap" unique_id=836341655 instance=ExtResource("3_07edn")]
+
+[node name="Entities" type="Node2D" parent="." unique_id=1117686574]
+
+[node name="LevelEntry" type="Sprite2D" parent="Entities" unique_id=628784317]
+texture = ExtResource("5_83j2n")
+
+[node name="Label" type="Label" parent="Entities/LevelEntry" unique_id=10356398]
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,17 +50,17 @@ theme_override_font_sizes/font_size = 32
 text = "Press E to enter"
 horizontal_alignment = 1
 
-[node name="Area2D" type="Area2D" parent="Entities/LevelEntry" index="1" unique_id=850508820]
+[node name="Area2D" type="Area2D" parent="Entities/LevelEntry" unique_id=850508820]
+position = Vector2(0, 1024)
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/LevelEntry/Area2D" index="0" unique_id=580229518]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/LevelEntry/Area2D" unique_id=580229518]
 shape = SubResource("RectangleShape2D_07edn")
 
-[node name="Dropoff" type="Sprite2D" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="1" unique_id=1220649503]
-position = Vector2(-1073, 633)
-texture = ExtResource("4_07edn")
+[node name="Dropoff" type="Sprite2D" parent="Entities" unique_id=1220649503]
+texture = ExtResource("6_k4f7h")
 
-[node name="Label" type="Label" parent="Entities/Dropoff" index="0" unique_id=1937373841]
+[node name="Label" type="Label" parent="Entities/Dropoff" unique_id=1937373841]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -72,25 +78,36 @@ timepieces"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Area2D" type="Area2D" parent="Entities/Dropoff" index="1" unique_id=1920801315]
+[node name="Area2D" type="Area2D" parent="Entities/Dropoff" unique_id=1920801315]
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Dropoff/Area2D" index="0" unique_id=81440941]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Dropoff/Area2D" unique_id=81440941]
 shape = SubResource("RectangleShape2D_07edn")
 
-[node name="Player" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="2" unique_id=726854448]
+[node name="Player" parent="Entities" unique_id=726854448 instance=ExtResource("6_12hn5")]
 position = Vector2(-1657, 769)
+terminalVelocity = 500.0
 inputPauseAfterWallJump = 0.282
 
-[node name="Label" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="3" unique_id=983034476]
+[node name="Label" type="Label" parent="Entities" unique_id=983034476]
 visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = -497.0
+offset_right = 163.0
+offset_bottom = -469.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "# of collectibles:"
+horizontal_alignment = 1
+script = ExtResource("7_hjd8s")
+metadata/_edit_use_anchors_ = true
 
-[node name="Camera2D" parent="." index="2" unique_id=761304463]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=761304463]
 position = Vector2(0, -67)
 zoom = Vector2(0.5, 0.5)
-
-[node name="CompleteLevelArea" parent="." index="3" unique_id=718238628]
-position = Vector2(-167.99994, -1313.9999)
 
 [connection signal="body_entered" from="Entities/LevelEntry/Area2D" to="Entities/LevelEntry/Label" method="set_visible" unbinds=1 binds= [true]]
 [connection signal="body_exited" from="Entities/LevelEntry/Area2D" to="Entities/LevelEntry/Label" method="set_visible" unbinds=1 binds= [false]]
