@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bmpmnbbfayvo4"]
+
+[ext_resource type="Script" uid="uid://cc1byrm6hqyrs" path="res://src/levels/level.gd" id="1_axrtr"]
+[ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="2_2l1so"]
+[ext_resource type="PackedScene" uid="uid://03vulpfxbwb8" path="res://src/levels/level_tilemap_template.tscn" id="3_7tdcf"]
+[ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="4_jd54p"]
+[ext_resource type="Script" uid="uid://dil554sekk80u" path="res://src/gameplay/ui/collectibles_counter.gd" id="5_l1ksh"]
+[ext_resource type="PackedScene" uid="uid://ch6duk5i2ejs2" path="res://src/gameplay/environment/collectible_template.tscn" id="6_erces"]
+
+[node name="Level" type="Node2D" unique_id=1273719150]
+script = ExtResource("1_axrtr")
+metadata/_custom_type_script = "uid://cc1byrm6hqyrs"
+
+[node name="LevelLayer" type="Node2D" parent="." unique_id=1267301956]
+
+[node name="BackgroundSprite" type="Sprite2D" parent="LevelLayer" unique_id=2103697111]
+modulate = Color(0.2341761, 0.2385065, 0.20963703, 1)
+scale = Vector2(16, 8)
+texture = ExtResource("2_2l1so")
+
+[node name="TileMap" parent="LevelLayer" unique_id=1277057473 instance=ExtResource("3_7tdcf")]
+
+[node name="Entities" type="Node2D" parent="." unique_id=1117686574]
+
+[node name="Player" parent="Entities" unique_id=726854448 instance=ExtResource("4_jd54p")]
+position = Vector2(-646, 381)
+terminalVelocity = 500.0
+
+[node name="Label" type="Label" parent="Entities" unique_id=983034476]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = -497.0
+offset_right = 163.0
+offset_bottom = -469.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "# of collectibles:"
+horizontal_alignment = 1
+script = ExtResource("5_l1ksh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=761304463]
+position = Vector2(-8, -34)
+
+[node name="TemplateCollectible" parent="." unique_id=1383793651 instance=ExtResource("6_erces")]
+position = Vector2(575, -225)
