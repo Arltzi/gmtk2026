@@ -8,5 +8,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if $Control/Label.visible and Input.is_action_just_pressed("interact"):
+	if $Label.visible and Input.is_action_just_pressed("interact"):
 		LevelLoader.complete_level()
