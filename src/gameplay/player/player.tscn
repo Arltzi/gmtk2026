@@ -322,3 +322,17 @@ offset_top = -155.0
 offset_right = 23.0
 offset_bottom = -80.0
 color = Color(1, 0.078431375, 0.14117648, 0.59607846)
+
+[node name="RewindSFX" type="AudioStreamPlayer2D" parent="." unique_id=1510908155]
+
+[node name="StepsSFX" type="AudioStreamPlayer2D" parent="." unique_id=1795871284]
+
+[node name="TimeGearSFX" type="AudioStreamPlayer2D" parent="." unique_id=1604544295]
+
+[node name="DepositSFX" type="AudioStreamPlayer2D" parent="." unique_id=1894730789]
+
+[node name="LandingSFX" type="AudioStreamPlayer2D" parent="." unique_id=1016542155]
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="." unique_id=1552889296]
+
+[node name="DoorSFX" type="AudioStreamPlayer2D" parent="." unique_id=837860665]

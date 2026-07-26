@@ -9,6 +9,7 @@ const START_TIME_SECONDS: float = 60.0
 const TIME_PER_GEAR: float = 10.0
 
 var deposited_gears: int = 0
+var held_gears: int = 0
 
 # Current loop
 var starting_time := START_TIME_SECONDS
@@ -33,6 +34,15 @@ func _process(delta: float) -> void:
 func deposit_gears(num_gears: int) -> void:
 	deposited_gears += num_gears
 	start_run()
+	
+func get_deposited_gears() -> int:
+	return deposited_gears
+
+func set_held_gears(num_gears: int) -> void:
+	held_gears = num_gears
+
+func get_held_gears() -> int:
+	return held_gears
 
 func start_run() -> void:
 	starting_time = START_TIME_SECONDS + deposited_gears * TIME_PER_GEAR

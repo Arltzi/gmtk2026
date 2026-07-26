@@ -45,6 +45,7 @@ func reset_counter() -> void:
 
 func update_held_gears() -> void:
 	held_gears = min(collectibles, 3)
+	ClockManager.set_held_gears(held_gears)
 	maxSpeedLock = _maxSpeed * (1 + overclock_modifiers[held_gears].speed)
 	timeToReachMaxSpeed = _timeToReachMaxSpeed * (1 - overclock_modifiers[held_gears].speed)
 	jumpHeight = _jumpHeight * (1 + overclock_modifiers[held_gears].jump_height)

@@ -25,3 +25,6 @@ func _update_clock_hands(hour: int, minute: int) -> void:
 	# so the hour hand sweeps smoothly between numbers (e.g., at 11:30 it sits right between 11 and 12).
 	var hour_12 = hour % 12
 	hour_hand.rotation_degrees = (hour_12 * 30.0) + ((minute / 60.0) * 30.0)
+	
+	$"../Held Gears/Label".text = str(ClockManager.get_held_gears())
+	$"../Total Gears/Label".text = str(ClockManager.get_deposited_gears())
