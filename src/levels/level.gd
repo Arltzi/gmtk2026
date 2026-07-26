@@ -8,7 +8,6 @@ class_name Level
 var next_level_scene : PackedScene
 
 #endregion
-
 #region COMPONENTS
 
 signal started(Level)
@@ -34,10 +33,10 @@ signal completed(Level)
 func start_level() -> void:
 	if(!next_level_path.is_empty()):
 		next_level_scene = load(next_level_path)
-	# validate next_level_scene here?
-	started.emit(self)
+	# validate next_level_scene here?	
 	pass
-
+	
+	
 func complete_level() -> void:
 	completed.emit(self)
 	pass
