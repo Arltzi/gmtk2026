@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://chghuqj2y44i1"]
+
+[ext_resource type="Texture2D" uid="uid://bfagb3vjjm8ur" path="res://assets/world/props/Big_clock_Door.png" id="1_3i1d7"]
+[ext_resource type="Script" uid="uid://l2sl5ufkoefe" path="res://src/levels/level_entry.gd" id="2_0u0pj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07edn"]
+size = Vector2(186, 300)
+
+[node name="LevelEntry" type="Sprite2D" unique_id=847383150]
+texture = ExtResource("1_3i1d7")
+script = ExtResource("2_0u0pj")
+
+[node name="Label" type="Label" parent="." unique_id=1224470451]
+anchors_preset = -1
+anchor_left = 0.46500003
+anchor_top = 0.776
+anchor_right = 0.546
+anchor_bottom = 0.791
+offset_left = -1500.0001
+offset_top = -1500.0
+offset_right = -1501.0
+offset_bottom = -1500.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Press E to enter"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1419337368]
+position = Vector2(0, 1024)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1628603195]
+position = Vector2(4, 0)
+shape = SubResource("RectangleShape2D_07edn")
+
+[connection signal="body_entered" from="Area2D" to="Label" method="set_visible" binds= [true]]
+[connection signal="body_exited" from="Area2D" to="Label" method="set_visible" binds= [false]]

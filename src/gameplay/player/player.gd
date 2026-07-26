@@ -1,8 +1,7 @@
 extends PlatformerController2D
 class_name Player
 
-signal collectibles_updated(new_val: int)
-signal collectibles_consumed(count: int)
+signal gears_collected
 
 var held_gears: int = 0
 var overclock_modifiers = [
@@ -29,18 +28,20 @@ var collectibles: int = 0:
 		return collectibles
 	set(value):
 		collectibles = value
-		collectibles_updated.emit(value)
+		gears_collected.emit(value)
+
+func _ready() -> void:
+	super()
+	ClockManager.start_run()
 
 func on_pickup(_collectible: Collectible) -> void:
 	collectibles += 1
 	update_held_gears()
-	pass
   
 func reset_counter() -> void:
-	collectibles_consumed.emit(collectibles)
+	gears_collected.emit(collectibles)
 	collectibles = 0
 	update_held_gears()
-	pass
 
 func update_held_gears() -> void:
 	held_gears = min(collectibles, 3)
@@ -48,3 +49,14 @@ func update_held_gears() -> void:
 	timeToReachMaxSpeed = _timeToReachMaxSpeed * (1 - overclock_modifiers[held_gears].speed)
 	jumpHeight = _jumpHeight * (1 + overclock_modifiers[held_gears].jump_height)
 	gravityScale = _gravityScale * (1 - overclock_modifiers[held_gears].jump_height)
+
+
+func _on_dropoff_deposit_gears() -> void:
+	if collectibles <= 0:
+		return
+	ClockManager.deposit_gears(collectibles)
+	held_gears = 0
+	collectibles = 0
+	update_held_gears()
+	
+	

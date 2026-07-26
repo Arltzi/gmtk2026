@@ -2,43 +2,49 @@ extends Node
 
 # Emits the exact hour and minute whenever the time changes so your UI can update
 signal time_updated(hour: int, minute: int)
-signal game_over;
+signal run_ended;
 
-# 1 real second = 1 in-game minute
-const REAL_SECONDS_PER_GAME_MINUTE = 1.0
+# 0.25 real second = 1 in-game minute
+const START_TIME_SECONDS: float = 60.0
+const TIME_PER_GEAR: float = 10.0
 
-# Start at 11:00 (11 hours * 60 minutes)
-var total_game_minutes: int = 11 * 60
+var deposited_gears: int = 0
+
+# Current loop
+var starting_time := START_TIME_SECONDS
+var time_remaining := START_TIME_SECONDS
+
 var _timer: float = 0.0
 
 func _ready() -> void:
-	# Defer the initial emit so other nodes have time to connect to the signal
-	call_deferred("_emit_time")
+	start_run()
 
 func _process(delta: float) -> void:
-	_timer += delta
-	
-	# Use 'while' to prevent drift and ensure we tick an in-game minute every real second
-	while _timer >= REAL_SECONDS_PER_GAME_MINUTE:
-		_timer -= REAL_SECONDS_PER_GAME_MINUTE
-		total_game_minutes += 1
-		_emit_time()
+	time_remaining -= delta
 
-# Call this from your object's script when it gets picked up
-func rewind_hours(hours_to_rewind: int) -> void:
-	total_game_minutes -= (hours_to_rewind * 60)
-	
-	# Optional: Prevent time from going negative (before 00:00)
-	if total_game_minutes < 0:
-		total_game_minutes = 0
-		# emit a game a over
-		game_over.emit()
-		
+	if time_remaining <= 0.0:
+		time_remaining = 0.0
+		run_ended.emit()
+		start_run()
+		return
+
 	_emit_time()
 
-# Calculates the 24-hour clock values and pushes them to your game
+func deposit_gears(num_gears: int) -> void:
+	deposited_gears += num_gears
+	start_run()
+
+func start_run() -> void:
+	starting_time = START_TIME_SECONDS + deposited_gears * TIME_PER_GEAR
+	time_remaining = starting_time
+	_emit_time()
+
 func _emit_time() -> void:
-	var hour = (total_game_minutes / 60) % 24
-	var minute = total_game_minutes % 60
-	
+	var progress := 1.0 - (time_remaining / starting_time)
+
+	var total_minutes := int(progress * 60.0)
+
+	var hour := 11 + (total_minutes / 60)
+	var minute := total_minutes % 60
+
 	time_updated.emit(hour, minute)

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://bfwimlp273fwl"]
+[gd_scene format=4 uid="uid://b1w57ir7w4yy7"]
 
 [ext_resource type="Script" uid="uid://cc1byrm6hqyrs" path="res://src/levels/level.gd" id="1_5eumd"]
 [ext_resource type="Texture2D" uid="uid://bdkm5cirr7hjl" path="res://assets/world/backgrounds/blank_256.png" id="2_06au5"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ch6duk5i2ejs2" path="res://src/gameplay/environment/collectible_template.tscn" id="5_yw7fu"]
 [ext_resource type="Script" uid="uid://dil554sekk80u" path="res://src/gameplay/ui/collectibles_counter.gd" id="6_agrcf"]
 [ext_resource type="PackedScene" uid="uid://xi6tu5lf2635" path="res://src/gameplay/environment/complete_level_area.tscn" id="7_sedjf"]
+[ext_resource type="PackedScene" uid="uid://y716s7463j5p" path="res://src/gameplay/environment/deposit.tscn" id="9_g6ksy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npo7k"]
 texture = ExtResource("3_06au5")
@@ -196,5 +197,8 @@ position = Vector2(-8, -34)
 
 [node name="CompleteLevelArea" parent="." unique_id=718238628 instance=ExtResource("7_sedjf")]
 position = Vector2(595, -202)
+
+[node name="Dropoff" parent="." unique_id=682190615 instance=ExtResource("9_g6ksy")]
+position = Vector2(493, 290)
 
 [connection signal="body_entered" from="CompleteLevelArea" to="." method="complete_level" flags=3 unbinds=1]

@@ -1,19 +1,115 @@
 [gd_scene format=3 uid="uid://dhptjvnnldmuy"]
 
+[ext_resource type="Script" uid="uid://bwhdke66tix0r" path="res://src/gameplay/ui/ui_clock.gd" id="1_3fed5"]
+[ext_resource type="Texture2D" uid="uid://bt7vughqytu1c" path="res://assets/ui/icons/UI_clock.png" id="1_ibp4d"]
+[ext_resource type="Texture2D" uid="uid://dlw8gkkvjxyiu" path="res://assets/ui/icons/UI_Short_Hand.png" id="2_6n4xl"]
+[ext_resource type="Texture2D" uid="uid://b63ci0xoip767" path="res://assets/ui/icons/UI_long_Hand.png" id="3_ibp4d"]
+[ext_resource type="Texture2D" uid="uid://4hymapmj2r1x" path="res://assets/world/props/TimeGear.png" id="5_tk58t"]
+[ext_resource type="Texture2D" uid="uid://dt7w0qpnttp0m" path="res://assets/world/props/TimeGear_reciver.png" id="6_n4iq1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0b36w"]
+font_size = 20
+
 [node name="MainGame" type="Node" unique_id=422265170]
 
 [node name="HudLayerCanvas" type="CanvasLayer" parent="." unique_id=1521226041]
 
 [node name="HudRoot" type="Control" parent="HudLayerCanvas" unique_id=535580556]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PauseLayerCanvas" type="CanvasLayer" parent="." unique_id=2034058915]
+[node name="UIClock" type="TextureRect" parent="HudLayerCanvas/HudRoot" unique_id=1501008021 node_paths=PackedStringArray("hour_hand", "minute_hand")]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 32.0
+offset_right = 1890.0
+offset_bottom = 298.0
+texture = ExtResource("1_ibp4d")
+script = ExtResource("1_3fed5")
+hour_hand = NodePath("HourHand")
+minute_hand = NodePath("MinuteHand")
 
-[node name="Control" type="Control" parent="PauseLayerCanvas" unique_id=1855001187]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HourHand" type="TextureRect" parent="HudLayerCanvas/HudRoot/UIClock" unique_id=1336726799]
+layout_mode = 0
+offset_left = 623.0
+offset_top = 84.0
+offset_right = 663.0
+offset_bottom = 151.0
+pivot_offset = Vector2(20, 48)
+texture = ExtResource("2_6n4xl")
+
+[node name="MinuteHand" type="TextureRect" parent="HudLayerCanvas/HudRoot/UIClock" unique_id=80211024]
+layout_mode = 0
+offset_left = 623.0
+offset_top = 66.0
+offset_right = 663.0
+offset_bottom = 150.0
+pivot_offset = Vector2(20, 64)
+texture = ExtResource("3_ibp4d")
+
+[node name="Held Gears" type="Control" parent="HudLayerCanvas/HudRoot" unique_id=224871282]
+layout_mode = 1
+anchor_right = 0.054
+anchor_bottom = 0.052
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 8.32
+offset_bottom = 55.84
+
+[node name="TextureRect" type="TextureRect" parent="HudLayerCanvas/HudRoot/Held Gears" unique_id=1919185253]
+layout_mode = 0
+offset_right = 56.0
+offset_bottom = 56.0
+texture = ExtResource("5_tk58t")
+
+[node name="Label" type="Label" parent="HudLayerCanvas/HudRoot/Held Gears" unique_id=1081640431]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0b36w")
+
+[node name="Total Gears" type="Control" parent="HudLayerCanvas/HudRoot" unique_id=1035469999]
+layout_mode = 1
+anchor_right = 0.046000004
+anchor_bottom = 0.037
+offset_left = 8.0
+offset_top = 112.0
+offset_right = 23.679993
+offset_bottom = 144.04001
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="HudLayerCanvas/HudRoot/Total Gears" unique_id=1287754937]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 56.0
+texture = ExtResource("6_n4iq1")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="HudLayerCanvas/HudRoot/Total Gears" unique_id=157393363]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_0b36w")

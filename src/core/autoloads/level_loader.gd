@@ -4,6 +4,7 @@ extends Node
 # const, static, public, private
 
 var initial_level: PackedScene = preload('res://src/levels/level_01.tscn')
+var current_level
 #endregion
 
 #region COMPONENTS
@@ -37,6 +38,7 @@ func load_level(scene: PackedScene) -> Level:
 	new_level.completed.connect(on_level_completed)
 	new_level.start_level()
 	level_loaded.emit(new_level)
+	current_level = new_level
 	return null
   
 func on_level_completed(level: Level) -> void:
@@ -44,4 +46,7 @@ func on_level_completed(level: Level) -> void:
 		level.queue_free()
 		load_level(level.next_level_scene)
 	pass
+
+func complete_level() -> void:
+	on_level_completed(current_level)
 #endregion

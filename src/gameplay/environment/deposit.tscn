@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://y716s7463j5p"]
+
+[ext_resource type="Texture2D" uid="uid://dt7w0qpnttp0m" path="res://assets/world/props/TimeGear_reciver.png" id="1_oq0tx"]
+[ext_resource type="Script" uid="uid://b17yrm8wvaepk" path="res://src/gameplay/environment/deposit.gd" id="2_u4jq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07edn"]
+size = Vector2(300, 300)
+
+[node name="Dropoff" type="Sprite2D" unique_id=682190615]
+texture = ExtResource("1_oq0tx")
+script = ExtResource("2_u4jq4")
+
+[node name="Label" type="Label" parent="." unique_id=385643114]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = -374.0
+offset_right = 18.0
+offset_bottom = -281.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Press E to deposit 
+timepieces"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2018092635]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=755740435]
+shape = SubResource("RectangleShape2D_07edn")
+
+[connection signal="body_entered" from="Area2D" to="Label" method="set_visible" binds= [true]]
+[connection signal="body_exited" from="Area2D" to="Label" method="set_visible" binds= [false]]
