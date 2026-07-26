@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://db4o1ygq58p13"]
+
+[ext_resource type="Script" uid="uid://d03wgoh3mnq62" path="res://src/gameplay/camera/AudioManager.gd" id="1_d3ugq"]
+
+[node name="AudioManager" type="Node" unique_id=1785905096]
+script = ExtResource("1_d3ugq")
+
+[node name="AudioStreamJump" type="AudioStreamPlayer2D" parent="." unique_id=744802018]
+volume_db = 3.0
+pitch_scale = 1.1
+
+[node name="AudioStreamHitWall" type="AudioStreamPlayer2D" parent="." unique_id=85755918]
+volume_db = -4.0
+pitch_scale = 1.1
+
+[node name="AudioStreamStunLanding" type="AudioStreamPlayer2D" parent="." unique_id=1187623463]
+volume_db = 4.0
+pitch_scale = 1.2
+
+[node name="AudioStreamLanding" type="AudioStreamPlayer2D" parent="." unique_id=1657307528]
+volume_db = -1.0
+pitch_scale = 0.8
+
+[node name="AudioStreamChargeJump" type="AudioStreamPlayer2D" parent="." unique_id=585852127]
+volume_db = 4.0
+pitch_scale = 0.8
+
+[node name="AudioStreamSwitchRoom" type="AudioStreamPlayer2D" parent="." unique_id=1998843528]
+pitch_scale = 1.5
+
+[node name="AudioStreamSpecialRock" type="AudioStreamPlayer2D" parent="." unique_id=1059147745]
+volume_db = 3.0
+pitch_scale = 1.2
