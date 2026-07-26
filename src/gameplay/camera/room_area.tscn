@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dln8nf7qxl4b7"]
+
+[ext_resource type="Script" uid="uid://cynrw40ayb544" path="res://src/gameplay/camera/room_area.gd" id="1_rusfi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpxp7"]
+size = Vector2(512, 288)
+
+[node name="RoomArea" type="Area2D" unique_id=2101391593]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_rusfi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459351851]
+z_index = -5
+shape = SubResource("RectangleShape2D_dpxp7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

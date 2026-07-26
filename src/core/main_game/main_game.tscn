@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://bwhdke66tix0r" path="res://src/gameplay/ui/ui_clock.gd" id="1_3fed5"]
 [ext_resource type="Texture2D" uid="uid://bt7vughqytu1c" path="res://assets/ui/icons/UI_clock.png" id="1_ibp4d"]
 [ext_resource type="PackedScene" uid="uid://c5wrp22t3vyok" path="res://src/levels/level_01.tscn" id="1_l0hoa"]
+[ext_resource type="PackedScene" uid="uid://db4o1ygq58p13" path="res://src/gameplay/camera/audio_manager.tscn" id="1_tc86p"]
 [ext_resource type="Texture2D" uid="uid://dlw8gkkvjxyiu" path="res://assets/ui/icons/UI_Short_Hand.png" id="2_6n4xl"]
+[ext_resource type="PackedScene" uid="uid://dln8nf7qxl4b7" path="res://src/gameplay/camera/room_area.tscn" id="3_86u7o"]
 [ext_resource type="Texture2D" uid="uid://b63ci0xoip767" path="res://assets/ui/icons/UI_long_Hand.png" id="3_ibp4d"]
 [ext_resource type="Texture2D" uid="uid://4hymapmj2r1x" path="res://assets/world/props/TimeGear.png" id="5_tk58t"]
 [ext_resource type="Texture2D" uid="uid://dt7w0qpnttp0m" path="res://assets/world/props/TimeGear_reciver.png" id="6_n4iq1"]
@@ -13,7 +15,12 @@ font_size = 20
 
 [node name="MainGame" type="Node" unique_id=422265170]
 
+[node name="AudioManager" parent="." unique_id=381147419 instance=ExtResource("1_tc86p")]
+script = null
+
 [node name="Level2" parent="." unique_id=1273719150 instance=ExtResource("1_l0hoa")]
+
+[node name="RoomArea" parent="Level2" unique_id=2101391593 instance=ExtResource("3_86u7o")]
 
 [node name="HudLayerCanvas" type="CanvasLayer" parent="." unique_id=1521226041]
 
