@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cx0505wwk20dl"]
+
+[ext_resource type="Script" uid="uid://ddw32ws3m0esk" path="res://src/gameplay/environment/clock.gd" id="1_27l2v"]
+[ext_resource type="Texture2D" uid="uid://budugw1nupn8q" path="res://assets/world/clock/Big_clock_Face.png" id="1_y5xis"]
+[ext_resource type="Texture2D" uid="uid://c51i5h844vvml" path="res://assets/world/clock/Big_clock_Short_Hand.png" id="3_t5u2e"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w3ifw"]
+load_path = "res://.godot/imported/Big_clock_Long_Hand.png-dc6b4c75c133ffc64ee58088aa8a856d.ctex"
+
+[node name="Clock" type="Node2D" unique_id=836341655 node_paths=PackedStringArray("hour_hand", "minute_hand")]
+script = ExtResource("1_27l2v")
+hour_hand = NodePath("hour_hand")
+minute_hand = NodePath("minute_hand")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=280599672]
+texture = ExtResource("1_y5xis")
+
+[node name="hour_hand" type="Sprite2D" parent="." unique_id=1100087753]
+texture = ExtResource("3_t5u2e")
+
+[node name="minute_hand" type="Sprite2D" parent="." unique_id=863114996]
+texture = SubResource("CompressedTexture2D_w3ifw")

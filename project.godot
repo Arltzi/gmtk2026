@@ -12,13 +12,14 @@ config_version=5
 
 config/name="gmtk2026"
 run/main_scene="uid://dhptjvnnldmuy"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 TickManager="*uid://cxha5g28ldss1"
 LevelLoader="*uid://b246lksuu6la2"
+ClockManager="*uid://dpa2f3tc4d1ag"
 
 [display]
 
@@ -26,6 +27,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[dotnet]
+
+project/assembly_name="gmtk2026"
 
 [editor_plugins]
 
