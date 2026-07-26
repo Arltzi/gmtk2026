@@ -82,7 +82,7 @@ shape = SubResource("RectangleShape2D_07edn")
 position = Vector2(-1657, 769)
 inputPauseAfterWallJump = 0.282
 
-[node name="Label" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="4" unique_id=983034476]
+[node name="Label" parent="Entities" parent_id_path=PackedInt32Array(1117686574) index="3" unique_id=983034476]
 visible = false
 
 [node name="Camera2D" parent="." index="2" unique_id=761304463]
