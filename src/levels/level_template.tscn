@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://03vulpfxbwb8" path="res://src/levels/level_tilemap_template.tscn" id="3_88vja"]
 [ext_resource type="PackedScene" uid="uid://chm8t12v7d5yt" path="res://src/gameplay/player/player.tscn" id="3_nm6nc"]
 [ext_resource type="Script" uid="uid://dil554sekk80u" path="res://src/gameplay/ui/collectibles_counter.gd" id="5_nm6nc"]
-[ext_resource type="PackedScene" uid="uid://ch6duk5i2ejs2" path="res://src/gameplay/environment/collectible_template.tscn" id="6_t1prb"]
 [ext_resource type="PackedScene" uid="uid://xi6tu5lf2635" path="res://src/gameplay/environment/complete_level_area.tscn" id="6_tphog"]
 
 [node name="Level" type="Node2D" unique_id=1273719150]
@@ -25,10 +24,7 @@ texture = ExtResource("2_88vja")
 
 [node name="Player" parent="Entities" unique_id=726854448 instance=ExtResource("3_nm6nc")]
 position = Vector2(-646, 381)
-
-[node name="TemplateCollectible" parent="Entities" unique_id=1383793651 instance=ExtResource("6_t1prb")]
-position = Vector2(52, 23)
-scale = Vector2(0.99999994, 0.8)
+terminalVelocity = 500.0
 
 [node name="Label" type="Label" parent="Entities" unique_id=983034476]
 anchors_preset = 5
