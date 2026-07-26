@@ -20,9 +20,29 @@ region = Rect2(600, 200, 200, 200)
 atlas = ExtResource("3_k2146")
 region = Rect2(800, 200, 200, 200)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdkad"]
+atlas = ExtResource("3_k2146")
+region = Rect2(0, 600, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch2no"]
+atlas = ExtResource("3_k2146")
+region = Rect2(200, 600, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm8do"]
+atlas = ExtResource("3_k2146")
+region = Rect2(400, 600, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gay3"]
+atlas = ExtResource("3_k2146")
+region = Rect2(600, 600, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_474t2"]
+atlas = ExtResource("3_k2146")
+region = Rect2(800, 600, 200, 200)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ymqj1"]
 atlas = ExtResource("3_k2146")
-region = Rect2(200, 400, 200, 200)
+region = Rect2(400, 400, 200, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjr3t"]
 atlas = ExtResource("3_k2146")
@@ -103,6 +123,26 @@ animations = [{
 }],
 "loop": 1,
 "name": &"dash",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdkad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch2no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wm8do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gay3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_474t2")
+}],
+"loop": 1,
+"name": &"deposit",
 "speed": 6.0
 }, {
 "frames": [{
@@ -238,9 +278,10 @@ metadata/_custom_type_script = "uid://c42bfqch75on3"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1503684476]
 position = Vector2(0, -87)
 sprite_frames = SubResource("SpriteFrames_4drs2")
-animation = &"walk"
+animation = &"deposit"
 autoplay = "idle"
-frame_progress = 0.9843755
+frame = 2
+frame_progress = 0.76583254
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300806263]
 position = Vector2(0, -45)
