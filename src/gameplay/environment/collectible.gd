@@ -4,6 +4,7 @@ class_name Collectible
 #region FIELDS & PROPERTIES
 # const, static, public, private
 @export var spin_rate : float = 1
+var picked_up := false
 #endregion
 
 #region COMPONENTS
@@ -21,25 +22,24 @@ class_name Collectible
 #region CALLBACKS
 
 func _process(delta: float) -> void:
-  #rotate(delta * spin_rate)
-  pass
+	#rotate(delta * spin_rate)
+	pass
   
 func _on_area_2d_body_entered(body: Node2D) -> void:
-  if body is Player:
-    call_deferred(&'pickup', body)
-  pass
+	if picked_up:
+		return
+		
+	if body is Player:
+		picked_up = true
+		$Area2D.set_deferred("monitoring", false)
+		body.on_pickup(self)
+		queue_free()
+	pass
   
 #endregion
 
 #region FUNCTIONS
 # static, public, protected, private
 
-func pickup(player : Player) -> void:
-  player.on_pickup(self)
-  $Sprite2D.visible = false
-  $Area2D/CollisionShape2D.disabled = true
-  $GPUParticles2D.emitting = false
-  $PointLight2D.enabled = false
-  pass
   
 #endregion

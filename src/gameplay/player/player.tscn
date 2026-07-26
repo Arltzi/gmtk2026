@@ -103,21 +103,36 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nm6nc"]
-radius = 36.0
-height = 100.0
+radius = 25.0
+height = 85.0
 
 [node name="Player" type="CharacterBody2D" unique_id=647094626 node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "leftRaycast", "middleRaycast", "rightRaycast")]
 collision_layer = 4
 collision_mask = 11
+safe_margin = 9.593
 script = ExtResource("1_64h4j")
-maxSpeed = 400.0
-jumpHeight = 4.0
-terminalVelocity = 1200.0
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
+terminalVelocity = 2000.0
+descendingGravityFactor = 1.75
+wallJump = true
+inputPauseAfterWallJump = 0.2
+wallKickAngle = 50.0
+dashCancel = false
+cornerCutting = true
 leftRaycast = NodePath("lCast")
 middleRaycast = NodePath("mCast")
 rightRaycast = NodePath("rCast")
+run = true
+jump = true
+idle = true
+walk = true
+slide = true
+latch = true
+falling = true
+crouch_idle = true
+crouch_walk = true
+roll = true
 metadata/_custom_type_script = "uid://c42bfqch75on3"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1503684476]
@@ -127,7 +142,7 @@ animation = &"jump"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=300806263]
-position = Vector2(1, -50)
+position = Vector2(0, -45)
 shape = SubResource("CapsuleShape2D_nm6nc")
 
 [node name="lCast" type="RayCast2D" parent="." unique_id=209868773]

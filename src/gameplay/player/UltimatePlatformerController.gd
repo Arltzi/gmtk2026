@@ -15,11 +15,13 @@ class_name PlatformerController2D
 #INFO HORIZONTAL MOVEMENT 
 @export_category("L/R Movement")
 ##The max speed your player will move
-@export_range(50, 10000) var maxSpeed: float = 200.0
+@export_range(50, 10000) var _maxSpeed: float = 600.0
+@export var maxSpeed: float = 0
 ##How fast your player will reach max speed from rest (in seconds)
-@export_range(0, 4) var timeToReachMaxSpeed: float = 0.2
+@export_range(0, 4) var _timeToReachMaxSpeed: float = 0.1
+@export var timeToReachMaxSpeed: float = 0
 ##How fast your player will reach zero speed from max speed (in seconds)
-@export_range(0, 4) var timeToReachZeroSpeed: float = 0.2
+@export_range(0, 4) var timeToReachZeroSpeed: float = 0.05
 ##If true, player will instantly move and switch directions. Overrides the "timeToReach" variables, setting them to 0.
 @export var directionalSnap: bool = false
 ##If enabled, the default movement speed will by 1/2 of the maxSpeed and the player must hold a "run" button to accelerate to max speed. Assign "run" (case sensitive) in the project input settings.
@@ -28,11 +30,13 @@ class_name PlatformerController2D
 #INFO JUMPING 
 @export_category("Jumping and Gravity")
 ##The peak height of your player's jump
-@export var jumpHeight: float = 2.0
+@export var _jumpHeight: float = 2.5
+@export var jumpHeight: float = 0
 ##How many jumps your character can do before needing to touch the ground again. Giving more than 1 jump disables jump buffering and coyote time.
 @export var jumps: int = 1
 ##The strength at which your character will be pulled to the ground.
-@export var gravityScale: float = 20.0
+@export var _gravityScale: float = 60.0
+@export var gravityScale: float = 0
 ##The fastest your player can fall
 @export var terminalVelocity: float = 500.0
 ##Your player will move this amount faster when falling providing a less floaty jump curve.
@@ -184,6 +188,11 @@ func _ready():
 	wasMovingR = true
 	anim = PlayerSprite
 	col = PlayerCollider
+	
+	maxSpeed = _maxSpeed
+	timeToReachMaxSpeed = _timeToReachMaxSpeed
+	jumpHeight = _jumpHeight
+	gravityScale = _gravityScale
 	
 	_updateData()
 	
@@ -337,7 +346,7 @@ func _physics_process(delta):
 	leftRelease = Input.is_action_just_released("left")
 	rightRelease = Input.is_action_just_released("right")
 	jumpTap = Input.is_action_just_pressed("jump")
-	#jumpRelease = Input.is_action_just_released("jump")
+	jumpRelease = Input.is_action_just_released("jump")
 	#runHold = Input.is_action_pressed("run")
 	latchHold = Input.is_action_pressed("latch")
 	#dashTap = Input.is_action_just_pressed("dash")
@@ -631,6 +640,8 @@ func _inputPauseReset(time):
 
 func _decelerate(delta, vertical):
 	if !vertical:
+		if abs(velocity.x) < 0.5:
+			velocity.x = 0
 		if velocity.x > 0:
 			velocity.x += deceleration * delta
 		elif velocity.x < 0:
