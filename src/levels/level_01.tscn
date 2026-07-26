@@ -139,7 +139,7 @@ sources/1 = SubResource("TileSetAtlasSource_ubs2i")
 
 [node name="Level2" type="Node2D" unique_id=1273719150]
 script = ExtResource("1_rrwkc")
-next_level_path = "res://src/levels/level_test_overclocked.tscn"
+next_level_path = "res://src/levels/big_level.tscn"
 metadata/_custom_type_script = "uid://cc1byrm6hqyrs"
 
 [node name="LevelLayer" type="Node2D" parent="." unique_id=1267301956]
