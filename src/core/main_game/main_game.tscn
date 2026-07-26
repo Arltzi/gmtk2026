@@ -12,6 +12,8 @@ font_size = 20
 
 [node name="MainGame" type="Node" unique_id=422265170]
 
+[node name="Level" parent="." unique_id=1273719150 instance=ExtResource("1_3fed5")]
+
 [node name="HudLayerCanvas" type="CanvasLayer" parent="." unique_id=1521226041]
 
 [node name="HudRoot" type="Control" parent="HudLayerCanvas" unique_id=535580556]

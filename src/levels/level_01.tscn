@@ -150,6 +150,8 @@ position = Vector2(-8.000061, -403)
 scale = Vector2(1.296, 1)
 texture = ExtResource("2_rrwkc")
 
+[node name="Clock" parent="LevelLayer" unique_id=836341655 instance=ExtResource("3_07edn")]
+
 [node name="TileMap" parent="LevelLayer" unique_id=1277057473 instance=ExtResource("3_k4f7h")]
 
 [node name="StaticEnvironment" parent="LevelLayer/TileMap" index="0" unique_id=1741468820]
@@ -187,7 +189,5 @@ script = ExtResource("7_hjd8s")
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=761304463]
-position = Vector2(0, -67)
-zoom = Vector2(0.5, 0.5)
 
 [editable path="LevelLayer/TileMap"]
