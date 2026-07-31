@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chm8t12v7d5yt"]
 
-[ext_resource type="Script" uid="uid://c42bfqch75on3" path="res://src/gameplay/player/player.gd" id="1_64h4j"]
+[ext_resource type="Script" uid="uid://btt5ogsp8lpiw" path="res://src/gameplay/player/UltimatePlatformerController.gd" id="1_k2146"]
 [ext_resource type="Texture2D" uid="uid://kfeok3s2p0ht" path="res://assets/art/characters/player/animation_sheet.png" id="3_k2146"]
 [ext_resource type="Texture2D" uid="uid://ce2wxjmhj22g6" path="res://assets/world/props/Character.png" id="4_sjr3t"]
 
@@ -246,33 +246,24 @@ animations = [{
 radius = 25.0
 height = 85.0
 
-[node name="Player" type="CharacterBody2D" unique_id=647094626 node_paths=PackedStringArray("PlayerSprite", "PlayerCollider", "leftRaycast", "middleRaycast", "rightRaycast")]
+[node name="Player" type="CharacterBody2D" unique_id=647094626 node_paths=PackedStringArray("ray_top_left", "ray_top_right")]
 collision_layer = 4
 collision_mask = 11
 safe_margin = 9.593
-script = ExtResource("1_64h4j")
-PlayerSprite = NodePath("AnimatedSprite2D")
-PlayerCollider = NodePath("CollisionShape2D")
-terminalVelocity = 2000.0
-descendingGravityFactor = 1.75
-wallJump = true
-inputPauseAfterWallJump = 0.2
-wallKickAngle = 50.0
-dashCancel = false
-cornerCutting = true
-leftRaycast = NodePath("lCast")
-middleRaycast = NodePath("mCast")
-rightRaycast = NodePath("rCast")
-run = true
-jump = true
-idle = true
-walk = true
-slide = true
-latch = true
-falling = true
-crouch_idle = true
-crouch_walk = true
-roll = true
+script = ExtResource("1_k2146")
+speed = 600.0
+acceleration = 4000.0
+friction = 4000.0
+jump_force = -800.0
+base_gravity = 1800.0
+fall_gravity_multiplier = 3.0
+coyote_time = 0.2
+jump_buffer_time = 0.2
+wall_slide_speed = 200.0
+wall_jump_velocity = Vector2(800, -700)
+corner_push_amount = 4.0
+ray_top_left = NodePath("lCast")
+ray_top_right = NodePath("rCast")
 metadata/_custom_type_script = "uid://c42bfqch75on3"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1503684476]

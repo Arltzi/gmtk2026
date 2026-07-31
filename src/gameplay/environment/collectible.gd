@@ -28,12 +28,12 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if picked_up:
 		return
-		
-	if body is Player:
-		picked_up = true
-		$Area2D.set_deferred("monitoring", false)
-		body.on_pickup(self)
-		queue_free()
+		#
+	#if body is Player:
+		#picked_up = true
+		#$Area2D.set_deferred("monitoring", false)
+		#body.on_pickup(self)
+		#queue_free()
 	pass
   
 #endregion
